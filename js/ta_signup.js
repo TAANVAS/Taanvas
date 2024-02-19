@@ -7,6 +7,7 @@ async function signUp() {
 	user.set("username", document.getElementById("username").value);
 	user.set("email", document.getElementById("email").value);
 	user.set("password", document.getElementById("password").value);
+	user.set("Znumber", document.getElementById("Znumber").value);
 	try {
 		user = await user.save();
 		if (user !== null) {
