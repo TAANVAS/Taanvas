@@ -5,7 +5,7 @@ async function checkCurrentUser() {
 		const currentUser = await Parse.User.currentAsync();
 		if (currentUser) {
 			// User is logged in
-			console.log("Current user:", currentUser.get("username"));
+			console.log("Current user:", currentUser.get("Znumber"));
 		} else {
 			// User is not logged in
 			await Parse.User.logOut();
@@ -21,7 +21,7 @@ document.getElementById("login").addEventListener("click", async function () {
 });
 
 async function login() {
-	const username = document.getElementById('username').value;
+	const username = document.getElementById('Znumber').value;
 	const password = document.getElementById('password').value;
 	try {
 		let user = await Parse.User.logIn(username, password);
