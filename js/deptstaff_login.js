@@ -27,7 +27,7 @@ async function login() {
 		let user = await Parse.User.logIn(username, password);
 		// login success
 		console.log("User successfully logged in", user);
-		location.href = 'dept_staff.html';
+		location.href = './dept_staff/dept_staff.html';
 	}
 	catch (error) {
 		// login failed
