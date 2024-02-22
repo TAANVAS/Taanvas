@@ -1,0 +1,66 @@
+<html>
+<!-- Author: Ayesha Fatima -->
+<!-- Dashboard Layout -->
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="flex flex-col h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4 px-6">
+        <h1 class="text-2xl font-bold">Instructor Dashboard</h1>
+        <!-- Navigation Links -->
+        <nav class="mt-2">
+            <a href="#" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Home</a>
+            <a href="C:\Users\af181\OneDrive\Desktop\tailwindstarter\disk\courses.html" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Courses</a>
+            <!-- a href="#" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">TA Reports</a -->
+            <a href="#" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-gray-100 p-6">
+        <!-- Course List -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Your Courses</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Course Card -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Course Name</h3>
+                    <p class="text-gray-600">Course Description</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <!-- Repeat for each course -->
+            </div>
+        </section>
+
+        <!-- TA Performance Reports -->
+        <section class="mt-6">
+            <h2 class="text-xl font-semibold mb-4">TA Performance Reports</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr class="text-left bg-gray-200">
+                            <th class="px-4 py-2">TA Name</th>
+                            <th class="px-4 py-2">Course</th>
+                            <th class="px-4 py-2">Date</th>
+                            <th class="px-4 py-2">Report</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-2">TA Name</td>
+                            <td class="px-4 py-2">Course Name</td>
+                            <td class="px-4 py-2">Date</td>
+                            <td class="px-4 py-2"><a href="#" class="text-blue-600 hover:underline">View Report</a></td>
+                        </tr>
+                        <!-- Repeat for each report -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 px-6">
+        <p>&copy; Instructor dashboard </p>
+    </footer>
+</div>
+</html>
