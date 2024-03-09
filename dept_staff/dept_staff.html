@@ -32,7 +32,37 @@
 		</div>
 	</nav>
 	<!-- main content -->
-
+	<div class="container mx-auto p-8" id="courses">
+		<h1 class="text-2xl font-bold text-center mb-4">Department Staff</h1>
+		<table class="min-w-full bg-white border border-gray-300">
+			<thead class="bg-gray-100">
+				<tr>
+					<th class="py-2 px-4 border-b border-gray-300">Title</th>
+					<th class="py-2 px-4 border-b border-gray-300">CRN</th>
+					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
+					<th class="py-2 px-4 border-b border-gray-300">Course Number</th>
+					<th class="py-2 px-4 border-b border-gray-300">Term</th>
+					<th class="py-2 px-4 border-b border-gray-300">Deadline</th>
+					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
+					<td class="py-2 px-4 border-b border-gray-300">95032</td>
+					<td class="py-2 px-4 border-b border-gray-300">COP</td>
+					<td class="py-2 px-4 border-b border-gray-300">3014</td>
+					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
+					    <button class="checkButton px-4 py-2 bg-green-500 text-white rounded">Check</button>
+					    &nbsp; &nbsp;
+					    <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 	<!-- footer -->
 	<footer class="bg-gray-600 text-white py-4">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,6 +73,29 @@
 	</footer>
 
 	<!-- scripts -->
+	<script>
+	const checkButtons = document.querySelectorAll('.checkButton');
+	const deleteButtons = document.querySelectorAll('.deleteButton');
+
+	checkButtons.forEach(checkButton => {
+	    checkButton.addEventListener('click', function() {
+	        checkButton.textContent = "Checked";
+	        const relatedDeleteButton = checkButton.parentElement.querySelector('.deleteButton');
+	        if (relatedDeleteButton) {
+	            relatedDeleteButton.style.display = 'none';
+	        }
+	    });
+	});
+
+	deleteButtons.forEach(deleteButton => {
+	    deleteButton.addEventListener('click', function() {
+	       const table = document.getElementById('courses');
+
+	       table.innerHTML = ""; 
+	    });
+	}); 
+
+	</script>
 </body>
 
 </html>
