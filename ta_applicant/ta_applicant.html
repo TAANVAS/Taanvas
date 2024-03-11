@@ -88,10 +88,10 @@
 			<!-- tbody -->
 			<tbody>
 				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-					<td class="py-2 px-4 border-b border-gray-300">COP</td>
+					<td class="py-2 px-4 border-b border-gray-300">Data struct/Algorithm Analysis</td>
+					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
 					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
 					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
 					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
 					    &nbsp; &nbsp;
@@ -99,10 +99,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-					<td class="py-2 px-4 border-b border-gray-300">COP</td>
+					<td class="py-2 px-4 border-b border-gray-300">3D Modeling and Design</td>
+					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
 					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
 					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
 					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
 					    &nbsp; &nbsp;
@@ -110,10 +110,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-					<td class="py-2 px-4 border-b border-gray-300">COP</td>
-					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Introduction to VLSI</td>
+					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
+					<td class="py-2 px-4 border-b border-gray-300">Fall 2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
 					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
 					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
 					    &nbsp; &nbsp;
@@ -121,10 +121,10 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-					<td class="py-2 px-4 border-b border-gray-300">COP</td>
-					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Intro to Internet Computing</td>
+					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
+					<td class="py-2 px-4 border-b border-gray-300">Fall 2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
 					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
 					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
 					    &nbsp; &nbsp;
@@ -144,6 +144,30 @@
 	</footer>
 
 	<!-- scripts -->
+	<script>
+		const acceptButtons = document.querySelectorAll('.acceptButton');
+		const denyButtons = document.querySelectorAll('.denyButton');
+
+		acceptButtons.forEach(acceptButton => {
+		    acceptButton.addEventListener('click', function() {
+		        acceptButton.textContent = "Accepted";
+		        const relatedDenyButton = acceptButton.parentElement.querySelector('.denyButton');
+		        if (relatedDenyButton) {
+		            relatedDenyButton.style.display = 'none';
+		        }
+		    });
+		});
+
+		denyButtons.forEach(denyButton => {
+		    denyButton.addEventListener('click', function() {
+		        denyButton.textContent = "Declined";
+		        const relatedAcceptButton = denyButton.parentElement.querySelector('.acceptButton');
+		        if (relatedAcceptButton) {
+		            relatedAcceptButton.style.display = 'none';
+		        }
+		    });
+		});
+	</script>
 </body>
 
 </html>
