@@ -25,7 +25,71 @@
 		</div>
 	</nav>
 	<!-- main content -->
-
+	<div class="container mx-auto p-8">
+		<h1 class="text-2xl font-bold text-center mb-4">TA Applicant</h1>
+		<div class="bg-red-500 text-white text-center py-2 px-4 rounded-lg">
+		  <p class="font-bold text-lg">No offers right now.</p>
+		  <p class="mt-2 text-sm">Please check back later.</p>
+		</div>
+		<!-- Accepted Offers heading before table -->
+		<h1 class="text-2xl font-bold text-center mb-4 mt-8">Accepted Offers</h1>
+		<!-- start table -->
+		<table class="min-w-full bg-white border border-gray-300">
+			<!-- thead -->
+			<thead class="bg-gray-100">
+				<tr>
+					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
+					<th class="py-2 px-4 border-b border-gray-300">Z Number</th>
+					<th class="py-2 px-4 border-b border-gray-300">Term</th>
+					<th class="py-2 px-4 border-b border-gray-300">Status</th>
+					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
+				</tr>
+			</thead>
+			<!-- tbody -->
+			<tbody>
+				<tr>
+					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
+					<td class="py-2 px-4 border-b border-gray-300">COP</td>
+					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
+					    <button class="checkButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
+					    &nbsp; &nbsp;
+					    <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Rejected Offers heading before table -->
+		<h1 class="text-2xl font-bold text-center mb-4 mt-8">Rejected Offers</h1>
+		<!-- start table -->
+		<table class="min-w-full bg-white border border-gray-300">
+			<!-- thead -->
+			<thead class="bg-gray-100">
+				<tr>
+					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
+					<th class="py-2 px-4 border-b border-gray-300">Z Number</th>
+					<th class="py-2 px-4 border-b border-gray-300">Term</th>
+					<th class="py-2 px-4 border-b border-gray-300">Status</th>
+					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
+				</tr>
+			</thead>
+			<!-- tbody -->
+			<tbody>
+				<tr>
+					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
+					<td class="py-2 px-4 border-b border-gray-300">COP</td>
+					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
+					<td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
+					    <button class="checkButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
+					    &nbsp; &nbsp;
+					    <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>	
 	<!-- footer -->
 	<footer class="bg-gray-600 text-white py-4">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
