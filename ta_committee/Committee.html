@@ -31,26 +31,33 @@
             <!-- thead -->
             <thead class="bg-gray-100">
                 <tr>
-                    <th class="py-2 px-4 border-b border-gray-300">Title</th>
-                    <th class="py-2 px-4 border-b border-gray-300">CRN</th>
                     <th class="py-2 px-4 border-b border-gray-300">Subject</th>
-                    <th class="py-2 px-4 border-b border-gray-300">Course Number</th>
+                    <th class="py-2 px-4 border-b border-gray-300">TA Applicant</th>
                     <th class="py-2 px-4 border-b border-gray-300">Term</th>
-                    <th class="py-2 px-4 border-b border-gray-300">Deadline</th>
+                    <th class="py-2 px-4 border-b border-gray-300">Status</th>
                     <th class="py-2 px-4 border-b border-gray-300">Actions</th>
                 </tr>
             </thead>
             <!-- tbody -->
             <tbody>
                 <tr>
-                    <td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-                    <td class="py-2 px-4 border-b border-gray-300">11712</td>
-                    <td class="py-2 px-4 border-b border-gray-300">COP</td>
-                    <td class="py-2 px-4 border-b border-gray-300">3014</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-                    <td class="py-2 px-4 border-b border-gray-300">1-18-2024</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Advanced Algorithms</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Caleb</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Fall 2022</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Accepted</td>
                     <td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-                        <button class="checkButton px-4 py-2 bg-green-500 text-white rounded">Check</button>
+                        <button class="finalizeButton px-4 py-2 bg-green-500 text-white rounded">Finalize</button>
+                        &nbsp; &nbsp;
+                        <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b border-gray-300">Database Management</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Jane Smith</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Fall 2023</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Accepted</td>
+                    <td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
+                        <button class="finalizeButton px-4 py-2 bg-green-500 text-white rounded">Finalize</button>
                         &nbsp; &nbsp;
                         <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Delete</button>
                     </td>
@@ -58,5 +65,37 @@
             </tbody>
         </table>
     </div>
+    <!-- footer -->
+    <footer class="bg-gray-600 text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <span>&copy; 2024 TAANVAS. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+    <!-- scripts -->
+    <script>
+    const finalizeButtons = document.querySelectorAll('.finalizeButton');
+    const deleteButtons = document.querySelectorAll('.deleteButton');
+
+    finalizeButtons.forEach(finalizeButton => {
+        finalizeButton.addEventListener('click', function() {
+            finalizeButton.textContent = "Finalized";
+            const relatedDeleteButton = finalizeButton.parentElement.querySelector('.deleteButton');
+            if (relatedDeleteButton) {
+                relatedDeleteButton.style.display = 'none';
+            }
+        });
+    });
+
+    deleteButtons.forEach(deleteButton => {
+        deleteButton.addEventListener('click', function() {
+           const table = document.getElementById('courses');
+
+           table.innerHTML = ""; 
+        });
+    }); 
+
+    </script>
 </body>
 </html>
