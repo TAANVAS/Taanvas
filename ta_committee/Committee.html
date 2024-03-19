@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TA Committee dashboard</title>
-        <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-        <script src="js/committeeApp.js" defer></script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA Committee dashboard</title>
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script src="js/committeeApp.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body> 
+
+<body>
     <!-- Navigation Bar -->
     <nav class="bg-gray-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +21,8 @@
                 <div class="flex">
                     <!-- link to application file -->
                     <a href="application.html"
-                        class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">TA Application</a>
+                        class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">TA
+                        Application</a>
                 </div>
             </div>
         </div>
@@ -64,6 +67,29 @@
                 </tr>
             </tbody>
         </table>
+        <!-- New Application heading before table -->
+        <h1 class="text-2xl font-bold text-center mb-4 mt-8">TA Performance Reports</h1>
+        <table class="min-w-full bg-white border border-gray-300">
+        <!-- thead -->
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="py-2 px-4 border-b border-gray-300">TA Name</th>
+                <th class="py-2 px-4 border-b border-gray-300">Performance</th>
+            </tr>
+        </thead>
+        <!-- tbody -->
+        <tbody>
+            <tr>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb</td>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
+            </tr>
+            <tr>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
+            </tr>
+        </tbody>
+
+    </table>
     </div>
     <!-- footer -->
     <footer class="bg-gray-600 text-white py-4">
@@ -75,27 +101,28 @@
     </footer>
     <!-- scripts -->
     <script>
-    const finalizeButtons = document.querySelectorAll('.finalizeButton');
-    const deleteButtons = document.querySelectorAll('.deleteButton');
+        const finalizeButtons = document.querySelectorAll('.finalizeButton');
+        const deleteButtons = document.querySelectorAll('.deleteButton');
 
-    finalizeButtons.forEach(finalizeButton => {
-        finalizeButton.addEventListener('click', function() {
-            finalizeButton.textContent = "Finalized";
-            const relatedDeleteButton = finalizeButton.parentElement.querySelector('.deleteButton');
-            if (relatedDeleteButton) {
-                relatedDeleteButton.style.display = 'none';
-            }
+        finalizeButtons.forEach(finalizeButton => {
+            finalizeButton.addEventListener('click', function() {
+                finalizeButton.textContent = "Finalized";
+                const relatedDeleteButton = finalizeButton.parentElement.querySelector('.deleteButton');
+                if (relatedDeleteButton) {
+                    relatedDeleteButton.style.display = 'none';
+                }
+            });
         });
-    });
 
-    deleteButtons.forEach(deleteButton => {
-        deleteButton.addEventListener('click', function() {
-           const table = document.getElementById('courses');
+        deleteButtons.forEach(deleteButton => {
+            deleteButton.addEventListener('click', function() {
+                const table = document.getElementById('courses');
 
-           table.innerHTML = ""; 
+                table.innerHTML = "";
+            });
         });
-    }); 
 
     </script>
 </body>
+
 </html>
