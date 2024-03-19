@@ -2,100 +2,42 @@
 <html>
 <head>
     <title>Welcome to TAANVAS</title>
-    <script>
-       document.addEventListener('DOMContentLoaded', function () {
-         // Dropdown menu functionality
-         const dropdownMenu = document.getElementById('dropdown-menu');
-         const dropdownItems = document.getElementById('dropdown-menu-items');
-         const selectedOption = document.getElementById('selected-option');
-
-         // Open/close dropdown menu
-         dropdownMenu.addEventListener('click', function () {
-           dropdownItems.classList.toggle('hidden');
-         });
-
-         // Select option from dropdown menu
-         dropdownItems.addEventListener('click', function (event) {
-           const clickedOption = event.target.textContent;
-           selectedOption.textContent = clickedOption;
-           dropdownItems.classList.add('hidden');
-
-           selectedOption.classList.remove('bg-green-500', 'bg-blue-500', 'bg-red-500', 'bg-yellow-500');
-           selectedOption.classList.remove('text-white');
-
-           switch (clickedOption) {
-            case 'TA Applicant':
-                selectedOption.classList.add('bg-green-500', 'text-white');
-            break;
-            case 'Department Staff':
-                selectedOption.classList.add('bg-blue-500', 'text-white');
-            break;
-            case 'TA Committee Member':
-                selectedOption.classList.add('bg-red-500', 'text-white');
-            break;
-            case 'Instructor':
-                selectedOption.classList.add('bg-yellow-500', 'text-white');
-            break;
-            default:
-                // handle default option
-            break;
-
-           }
-
-         });
-
-
-
-         // Submit button functionality
-         const submitButton = document.getElementById('submit-button');
-         submitButton.addEventListener('click', function () {
-           const selectedValue = selectedOption.textContent;
-
-           switch (selectedValue) {
-             case 'TA Applicant':
-               window.location.href = 'ta_login.html';
-               break;
-             case 'Department Staff':
-               window.location.href = 'deptstaff_login.html';
-               break;
-             case 'TA Committee Member':
-               window.location.href = 'committee_login.html';
-               break;
-             case 'Instructor':
-               window.location.href = 'instructor_login.html';
-               break;
-             default:
-               // handle default option
-               break;
-           }
-         });
-       }); 
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/main.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body>
-   <div class="flex items-center justify-center h-screen">
-     <div class="relative inline-block text-left">
-       <!-- Dropdown button -->
-       <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="dropdown-menu" aria-haspopup="true" aria-expanded="true">
-         <span id="selected-option">Select User Type</span>
-         <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-         </svg>
-       </button>
-       
-       <!-- Dropdown menu -->
-       <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-lg" aria-labelledby="dropdown-menu" id="dropdown-menu-items">
-         <ul class="py-1">
-           <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">TA Applicant</a></li>
-           <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Department Staff</a></li>
-           <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">TA Committee Member</a></li>
-           <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Instructor</a></li>
-         </ul>
-       </div>
-     </div>
-     
-     <!-- Submit button -->
-     <button id="submit-button" type="button" class="ml-4 px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Go</button>
-   </div> 
+  <div class="bg-indigo-500 py-8">
+      <div class="container mx-auto px-4">
+          <h1 class="text-4xl text-white font-bold mb-8">TAANVAS</h1>
+          <p class="text-white text-lg mb-8">Welcome to TAANVAS, the TA Application System</p>
+      </div>
+  </div>
+  <div class="bg-gradient-to-br from-indigo-900 to-violet-800 flex items-center justify-center h-screen">
+    <div class="relative inline-block text-left">
+      <!-- Dropdown button -->
+      <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="dropdown-menu" aria-haspopup="true" aria-expanded="true">
+        <span id="selected-option">Select User Type</span>
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-lg" aria-labelledby="dropdown-menu" id="dropdown-menu-items">
+        <ul class="py-1">
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">TA Applicant</a></li>
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Department Staff</a></li>
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">TA Committee Member</a></li>
+          <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Instructor</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Submit button -->
+    <button id="submit-button" type="button" class="ml-4 px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Go</button>
+  </div>
+    
 </body>
 </html>
