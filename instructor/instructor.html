@@ -16,51 +16,79 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow bg-yellow-500 p-6">
+    <main class="flex-grow bg-gray-100 p-6">
         <!-- Course List -->
         <section>
             <h2 class="text-xl font-semibold mb-4">Your Courses</h2>
             <div class="grid grid-cols-3 gap-4">
                 <!-- Course Card -->
                 <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Course Name</h3>
-                    <p class="text-gray-600">Course Description</p>
+                    <h3 class="font-semibold text-lg mb-2">Intro to Computer Science</h3>
+                    <p class="text-gray-600">Introducting core concepts about Computer Science.</p>
                     <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
                 </div>
-                <!-- Repeat for each course -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Data struct/Algorithm Analysis</h3>
+                    <p class="text-gray-600">This class is about data structures used in Computer Science interviews.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">3D Modeling and Design</h3>
+                    <p class="text-gray-600">New concepts about Modeling with AutoCAD software.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Intro to Internet Computing</h3>
+                    <p class="text-gray-600">Concepts about Web Development with HTML, CSS and JavaScript</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Introduction to VLSI</h3>
+                    <p class="text-gray-600">Introduction to Very Large Scale Integration (VLSI) using PSPICE.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Discrete Mathematics</h3>
+                    <p class="text-gray-600">Math for Computer Science</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Introduction to Programming in C</h3>
+                    <p class="text-gray-600">Learn how to Program in C with loops, conditions, functions, and structs.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">Cryptography</h3>
+                    <p class="text-gray-600">Learn about encryption, decryption, and public-key crypto.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-semibold text-lg mb-2">iOS Development with Swift</h3>
+                    <p class="text-gray-600">Learn how to program iPhone applications using the Swift programming language.</p>
+                    <a href="#" class="mt-2 text-blue-600 hover:underline">View Details</a>
+                </div>
             </div>
+            <!-- New Application heading before table -->
+            <h1 class="text-2xl font-bold text-center mb-4 mt-8">TA Performance Reports</h1>
+            <table class="min-w-full bg-white border border-gray-300">
+            <!-- thead -->
+            <thead class="bg-yellow-500">
+                <tr>
+                    <th class="py-2 px-4 border-b border-gray-300">TA Name</th>
+                    <th class="py-2 px-4 border-b border-gray-300">Performance</th>
+                </tr>
+            </thead>
+            <!-- tbody -->
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
+                </tr>
+            </tbody>
         </section>
-
-        <!-- TA Performance Reports -->
-        <section class="mt-6">
-            <h2 class="text-xl font-semibold mb-4">TA Performance Reports</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full bg-white rounded-lg shadow-md">
-                    <thead>
-                        <tr class="text-left bg-gray-200">
-                            <th class="px-4 py-2">TA Name</th>
-                            <th class="px-4 py-2">Course</th>
-                            <th class="px-4 py-2">Date</th>
-                            <th class="px-4 py-2">Report</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="px-4 py-2">TA Name</td>
-                            <td class="px-4 py-2">Course Name</td>
-                            <td class="px-4 py-2">Date</td>
-                            <td class="px-4 py-2"><a href="#" class="text-blue-600 hover:underline">View Report</a></td>
-                        </tr>
-                        <!-- Repeat for each report -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4 px-6">
-        <p>&copy; Instructor dashboard </p>
-    </footer>
-</div>
+        </main>
 </html>
