@@ -11,7 +11,7 @@
 
 <body>
 	<!-- Navigation Bar -->
-	<nav class="bg-gray-600">
+	<nav class="bg-blue-950">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between h-16">
 				<div class="flex items-center">
@@ -30,17 +30,17 @@
 	</nav>
 	<!-- main content -->
 	<div class="container mx-auto p-8" id="courses">
-		<h1 class="text-2xl font-bold text-center mb-4">Department Staff</h1>
+		<h2 class="text-xl font-semibold mb-4">Department Staff</h2>
 		<table class="min-w-full bg-white border border-gray-300">
-			<thead class="bg-blue-500">
+			<thead class="bg-blue-950">
 				<tr>
-					<th class="py-2 px-4 border-b border-gray-300">Title</th>
-					<th class="py-2 px-4 border-b border-gray-300">CRN</th>
-					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
-					<th class="py-2 px-4 border-b border-gray-300">Course Number</th>
-					<th class="py-2 px-4 border-b border-gray-300">Term</th>
-					<th class="py-2 px-4 border-b border-gray-300">Deadline</th>
-					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Title</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">CRN</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Subject</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Course Number</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Term</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Deadline</th>
+					<th class="py-2 px-4 text-white border-b border-gray-300">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -138,14 +138,7 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- footer -->
-	<footer class="bg-gray-600 text-white py-4">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="flex justify-center">
-				<span>&copy; 2024 TAANVAS. All rights reserved.</span>
-			</div>
-		</div>
-	</footer>
+	
 
 	<!-- scripts -->
 	<script>
@@ -164,9 +157,21 @@
 
 	deleteButtons.forEach(deleteButton => {
 	    deleteButton.addEventListener('click', function() {
-	       const table = document.getElementById('courses');
+	        const tr = this.closest('tr');
+	        if (tr) {
+	            tr.remove();
+	        }
 
-	       table.innerHTML = ""; 
+	        const table = document.getElementById('courses');
+	        if (table.querySelectorAll('tr').length === 1) {
+	            table.innerHTML = `
+	                <h2 class="text-xl font-semibold mb-4">Department Staff</h2> 
+	                <div class="bg-red-500 text-white text-center py-2 px-4 rounded-lg">
+	                    <p class="font-bold text-lg">All Courses have been deleted.</p>
+	                    <p class="mt-2 text-sm">Please refresh the page.</p>
+	                </div>
+	            `;
+	        } 
 	    });
 	}); 
 
