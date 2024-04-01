@@ -78,7 +78,36 @@ function loadPosts(numPosts) {
         requestedCell.textContent = result.get("recommendedClasses");
         pastCell.textContent = result.get("pastClasses");
         
+        // DROP DOWN MENU
+        function createDropdown(selectId, options) {
+          var select = document.createElement("select");
+          select.id = selectId;
+
+          for (var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.value = options[i].value;
+            option.text = options[i].text;
+            select.appendChild(option);
+          }
+
+          return select;
+        }
         
+        var partsRec = result.get("recommendedClasses").split(',')
+        var partsReq = result.get("requestedClasses").split(',');
+        var dropdownOptions = [];
+
+        for (var i = 0; i < partsRec.length; i++) {
+            dropdownOptions.push({ value: "option" + (i + 1), text: partsRec[i] });
+        }
+        for (var i = 0; i < partsReq.length; i++) {
+            dropdownOptions.push({ value: "option" + (i + 1), text: partsReq[i] });
+        }
+          
+        acceptCell.appendChild(createDropdown("dropdown1", dropdownOptions));
+        acceptCell.appendChild(document.createTextNode('\u00A0'));
+          
+        // ACCEPT / DENY BUTTONS
         var acceptButton = document.createElement('button');
         acceptButton.textContent = 'Accept';
         acceptButton.classList.add('acceptButton', 'px-4', 'py-2', 'bg-green-500', 'text-white', 'rounded');
