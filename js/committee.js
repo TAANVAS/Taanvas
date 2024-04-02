@@ -81,6 +81,9 @@ function loadPosts(numPosts) {
             // Set the text content of the button
             button.textContent = 'View Application';
 
+            //Add Tailwind CSS pill button classes
+            button.className = "bg-red-600 hover:bg-red-600 text-white font-bold py-1 px-2 rounded-full"; 
+
             // Set the onclick attribute of the button to a JavaScript function
             button.onclick = function() {
                 window.location.href = window.location.origin+'/ta_committee/application.html?username='+encodeURIComponent(results[step].get("username"));
