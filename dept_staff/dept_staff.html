@@ -28,8 +28,69 @@
 			</div>
 		</div>
 	</nav>
+    
+    <div class="container mx-auto p-8" id="courses">
+        <h1 class="text-2xl font-bold text-center mb-4 mt-8">Search Courses</h1>
+        
+        <div class="flex justify-center items-center bg-gray-100">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <input id="ZNumberInput" type="text" class="w-full border-gray-300 border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter Course ID here">
+            </div>
+        </div>
+        
+        <table id="performanceTable" class="min-w-full bg-white border border-gray-300">
+        <!-- thead -->
+        <thead class="bg-blue-950">
+            <tr>
+                <th class="py-2 px-4 border-b border-gray-300 text-white">Course Name</th>
+                <th class="py-2 px-4 border-b border-gray-300 text-white">CRN</th>
+                <th class="py-2 px-4 border-b border-gray-300 text-white">Course ID</th>
+                <th class="py-2 px-4 border-b border-gray-300 text-white">Term</th>
+            </tr>
+        </thead>
+        <!-- tbody -->
+        <tbody>
+            <tr >
+                <td class="py-2 px-4 border-b border-gray-300 text-center"> </td>
+                <td class="py-2 px-4 border-b border-gray-300 text-center"> </td>
+            </tr>
+            <tr hidden>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
+                <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
+            </tr>
+        </tbody>
+
+        </table>
+    </div>
+    
+            <!-- Main Content -->
+        <main class="flex-grow bg-white p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Applicant Form Card -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h2 class="font-semibold text-lg mb-2">Add Course</h2>
+                    <form id="applicantForm" enctype="multipart/form-data" class="mt-4">
+                        <label for="name" class="block mb-2">Name:</label>
+                        <input type="text" id="name" name="name" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+                        
+                        <label for="CRN" class="block mb-2">CRN:</label>
+                        <input type="text" id="CRN" name="CRN" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+                        
+                        <label for="courseID" class="block mb-2">Course ID:</label>
+                        <input value="COP-4410" type="text" id="courseID" name="courseID" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+ 
+                        <label for="Term" class="block mb-2">Term:</label>
+                        <input type="text" id="Term" name="Term" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+                        
+                        <button type="submit" class="w-full bg-fau-red hover:bg-fau-dark-blue text-white font-bold py-2 px-4 rounded">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    
+    
 	<!-- main content -->
-	<div class="container mx-auto p-8" id="courses">
+	<div hidden class="container mx-auto p-8" id="courses">
 		<h2 class="text-xl font-semibold mb-4">Department Staff</h2>
 		<table class="min-w-full bg-white border border-gray-300">
 			<thead class="bg-blue-950">
@@ -138,7 +199,6 @@
 			</tbody>
 		</table>
 	</div>
-	
 
 	<!-- scripts -->
 	<script>
