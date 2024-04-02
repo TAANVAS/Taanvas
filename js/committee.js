@@ -13,6 +13,7 @@ if (currentUser) {
 
 
 var Posts = Parse.Object.extend("User");
+var Reports = Parse.Object.extend("Report");
 
 
 var postNum = 0
@@ -30,7 +31,6 @@ function loadPosts(numPosts) {
             if (results[step].get("appliedDate") == null) {
                 continue;
             }
-            // Runs 5 times, with values of step 0 through 4.
             var table = document.getElementById('appTable')
             
             // Create a new row
@@ -38,9 +38,13 @@ function loadPosts(numPosts) {
 
             // Create new cells
             var nameCell = newRow.insertCell(0);
+            nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
             var appliedDateCell = newRow.insertCell(1);
+            appliedDateCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
             var CVCell = newRow.insertCell(2);
+            CVCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
             var applicationCell = newRow.insertCell(3);
+            applicationCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
 
             // Set the cell content
             nameCell.textContent = results[step].get("username");
@@ -52,7 +56,24 @@ function loadPosts(numPosts) {
                 appliedDateCell.textContent = "N/A"
             }
             
-            CVCell.textContent = results[step].get("CV");
+            if (results[step].get("CV")) {
+                // Assuming 'fileLink' contains the URL of the PDF file
+                var fileLink = results[step].get("CV")._url;
+                // Create an anchor element
+                var linkElement = document.createElement('a');
+                // Set the href attribute to the URL of the PDF file
+                linkElement.setAttribute('href', fileLink);
+                linkElement.style.textDecoration = "underline";
+                linkElement.style.color = "blue"; // Adjust the color as needed
+                linkElement.setAttribute('target', '_blank');
+                // Set the text content to "CV.pdf"
+                linkElement.textContent = "CV.pdf";
+                // Append the link
+                CVCell.appendChild(linkElement);
+            } else {
+                CVCell.textContent = "N/A"
+            }
+
                
             // Create a button element
             var button = document.createElement('button');
@@ -62,7 +83,7 @@ function loadPosts(numPosts) {
 
             // Set the onclick attribute of the button to a JavaScript function
             button.onclick = function() {
-                window.location.href = window.location.origin+'/application.html?username='+encodeURIComponent(results[step].get("username"));
+                window.location.href = window.location.origin+'/ta_committee/application.html?username='+encodeURIComponent(results[step].get("username"));
             };
 
 
@@ -88,3 +109,76 @@ function loadPosts(numPosts) {
 }
 
 loadPosts(5);
+
+document.getElementById('ZNumberInput').addEventListener('input', function(event) {
+    // Code to execute whenever input is changed
+    console.log('Input changed:', event.target.value);
+    znumQuery = new Parse.Query(Posts);
+    
+    znumQuery.equalTo("Znumber", event.target.value);
+    
+    znumQuery.first().then((result) => {
+        if (result) {
+            
+            
+
+            
+            
+            // Object with the specific ZNumber found
+            console.log(result);
+            
+            
+            var table = document.getElementById('performanceTable')
+            
+            // Create a new row
+            var newRow = table.insertRow();
+
+            // Create new cells
+            var nameCell = newRow.insertCell(0);
+            nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
+            var reportCell = newRow.insertCell(1);
+            reportCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
+
+            // Set the cell content
+            nameCell.textContent = result.get("username");
+            
+            if (!result.get("CV")) {
+                // Assuming 'fileLink' contains the URL of the PDF file
+                var fileLink = results[step].get("CV")._url;
+                // Create an anchor element
+                var linkElement = document.createElement('a');
+                // Set the href attribute to the URL of the PDF file
+                linkElement.setAttribute('href', fileLink);
+                linkElement.style.textDecoration = "underline";
+                linkElement.style.color = "blue"; // Adjust the color as needed
+                linkElement.setAttribute('target', '_blank');
+                // Set the text content to "CV.pdf"
+                linkElement.textContent = "CV.pdf";
+                // Append the link
+                CVCell.appendChild(linkElement);
+            } else {
+                //CVCell.textContent = "N/A"
+            }
+    
+            reportsQuery = new Parse.Query(Reports);
+            console.log("OBJECTID: "+result.id)
+            const userPointer = Parse.User.createWithoutData(result.id);
+            reportsQuery.equalTo("User", userPointer);
+
+            reportsQuery.first().then((result2) => {
+                if (result2) {
+                    console.log(result2)
+                    reportCell.textContent = result2.get("ReportString")
+                }
+            })
+            
+            
+            
+        } else {
+            // Object with the specific ZNumber not found
+            console.log("Object not found for the specific ZNumber.");
+        }
+    }).catch((error) => {
+        console.error("Error fetching object: ", error);
+    });
+});

@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TA Committee dashboard</title>
-    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-    <script src="js/committeeApp.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://npmcdn.com/parse/dist/parse.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="../js/committee.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="bg-gray-600">
+    <nav class="bg-blue-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -33,20 +37,20 @@
     <!-- main content -->
     <div class="container mx-auto p-8" id="courses">
         <h1 class="text-2xl font-bold text-center mb-4">TA Committee</h1>
-        <table class="min-w-full bg-white border border-gray-300">
+        <table class="mx-auto bg-white border border-gray-300" id = "appTable">
             <!-- thead -->
-            <thead class="bg-red-500">
+            <thead class="bg-red-600">
                 <tr>
-                    <th class="py-2 px-4 border-b border-gray-300">Subject</th>
-                    <th class="py-2 px-4 border-b border-gray-300">TA Applicant</th>
-                    <th class="py-2 px-4 border-b border-gray-300">Term</th>
-                    <th class="py-2 px-4 border-b border-gray-300">Status</th>
-                    <th class="py-2 px-4 border-b border-gray-300">Actions</th>
+                    <th class="text-left py-2 px-4 border-b border-gray-300">Name</th>
+                    <th class="text-left py-2 px-4 border-b border-gray-300">Date Applied</th>
+                    <th class="text-left py-2 px-4 border-b border-gray-300">CV</th>
+                    <th class="text-left py-2 px-4 border-b border-gray-300">Status</th>
+                    <th hidden class="text-left py-2 px-4 border-b border-gray-300">Actions</th>
                 </tr>
             </thead>
             <!-- tbody -->
             <tbody>
-                <tr>
+                <tr hidden>
                     <td class="py-2 px-4 border-b border-gray-300">Advanced Algorithms</td>
                     <td class="py-2 px-4 border-b border-gray-300">Caleb</td>
                     <td class="py-2 px-4 border-b border-gray-300">Fall 2022</td>
@@ -54,10 +58,10 @@
                     <td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
                         <button class="finalizeButton px-4 py-2 bg-green-500 text-white rounded">Finalize</button>
                         &nbsp; &nbsp;
-                        <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Delete</button>
+                        <button class="deleteButton px-4 py-2 bg-red-600 text-white rounded">Delete</button>
                     </td>
                 </tr>
-                <tr>
+                <tr hidden>
                     <td class="py-2 px-4 border-b border-gray-300">Database Management</td>
                     <td class="py-2 px-4 border-b border-gray-300">Jane Smith</td>
                     <td class="py-2 px-4 border-b border-gray-300">Fall 2023</td>
@@ -65,28 +69,35 @@
                     <td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
                         <button class="finalizeButton px-4 py-2 bg-green-500 text-white rounded">Finalize</button>
                         &nbsp; &nbsp;
-                        <button class="deleteButton px-4 py-2 bg-red-500 text-white rounded">Delete</button>
+                        <button class="deleteButton px-4 py-2 bg-red-600 text-white rounded">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
         <!-- New Application heading before table -->
         <h1 class="text-2xl font-bold text-center mb-4 mt-8">TA Performance Reports</h1>
-        <table class="min-w-full bg-white border border-gray-300">
+        
+        <div class="flex justify-center items-center bg-gray-100">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <input id="ZNumberInput" type="text" class="w-full border-gray-300 border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter ZNumber here">
+            </div>
+        </div>
+        
+        <table id="performanceTable" class="min-w-full bg-white border border-gray-300">
         <!-- thead -->
-        <thead class="bg-red-500">
+        <thead class="bg-red-600">
             <tr>
                 <th class="py-2 px-4 border-b border-gray-300">TA Name</th>
-                <th class="py-2 px-4 border-b border-gray-300">Performance</th>
+                <th class="py-2 px-4 border-b border-gray-300">Reports</th>
             </tr>
         </thead>
         <!-- tbody -->
         <tbody>
-            <tr>
+            <tr hidden>
                 <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb</td>
                 <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
             </tr>
-            <tr>
+            <tr hidden>
                 <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
                 <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
             </tr>
@@ -95,7 +106,7 @@
     </table>
     </div>
     <!-- footer -->
-    <footer class="bg-gray-600 text-white py-4">
+    <footer class="bg-blue-950 text-white py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center">
                 <span>&copy; 2024 TAANVAS. All rights reserved.</span>
