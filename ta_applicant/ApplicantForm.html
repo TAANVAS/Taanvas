@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA Applicant Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+</head>
+<body class="bg-white">
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header class="bg-fau-blue text-white py-4 px-6">
+            <h1 class="text-2xl font-bold">TA Applicant Form</h1>
+            <!-- Navigation Links (optional) -->
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow bg-white p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Applicant Form Card -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h2 class="font-semibold text-lg mb-2">TA Application</h2>
+                    <form id="applicantForm" enctype="multipart/form-data" class="mt-4">
+                        <label for="name" class="block mb-2">Name:</label>
+                        <input type="text" id="name" name="name" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+
+                        <label for="email" class="block mb-2">Email:</label>
+                        <input type="email" id="email" name="email" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+
+                        <label for="previousTA" class="block mb-2">Previously served as a TA at FAU:</label>
+                        <select id="previousTA" name="previousTA" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+
+                        <div id="previousTADetails" style="display: block;">
+                            <label for="previousCourses" class="block mb-2">Relevant Course(s) and Dates:</label>
+                            <textarea id="previousCourses" name="previousCourses" rows="4" class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue"></textarea>
+                        </div>
+
+                        <label for="qualifiedCourses" class="block mb-2">Select Qualified Courses:</label>
+                        <select class="js-example-basic-multiple w-full" multiple="multiple" style="width: 100%;">
+                            <option value="option1">Math</option>
+                            <option value="option2">Science</option>
+                            <option value="option3">PE</option>
+                            <option value="option4">Writing</option>
+                            <option value="option5">Reading</option>
+                        </select>
+
+                        <label for="cv" class="block mb-2">Upload CV:</label>
+                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
+
+                        <button type="submit" class="w-full bg-fau-red hover:bg-fau-dark-blue text-white font-bold py-2 px-4 rounded">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-fau-blue text-white py-4 px-6">
+            <p>&copy; TA Applicant Form</p>
+        </footer>
+    </div>
+
+    <style>
+        /* Custom styles for FAU colors */
+        .bg-fau-red { background-color: #AD1D28; }
+        .bg-fau-blue { background-color: #004B8D; }
+        .bg-fau-dark-blue { background-color: #00274C; }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Select options',
+                allowClear: true,
+                width: '100%'
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const previousTASelect = document.getElementById('previousTA');
+            const previousTADetails = document.getElementById('previousTADetails');
+
+            previousTASelect.addEventListener('change', () => {
+                if (previousTASelect.value === 'yes') {
+                    previousTADetails.style.display = 'block';
+                } else {
+                    previousTADetails.style.display = 'none';
+                }
+            });
+
+            const applicantForm = document.getElementById('applicantForm');
+
+            applicantForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(applicantForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const previousTA = formData.get('previousTA');
+                const previousCourses = formData.get('previousCourses');
+                const qualifiedCourses = formData.getAll('qualifiedCourses[]'); // Use getAll for multiple selection
+                const cv = formData.get('cv');
+
+                // Handle form submission - you can perform additional validation or submit data to the server here
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Previously served as TA:', previousTA);
+                console.log('Previous Courses:', previousCourses);
+                console.log('Qualified Courses:', qualifiedCourses);
+                console.log('CV:', cv);
+            });
+        });
+    </script>
+</body>
+</html>
