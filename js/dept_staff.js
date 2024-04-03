@@ -15,103 +15,37 @@ var Posts = Parse.Object.extend("User");
 var Reports = Parse.Object.extend("Report");
 var Courses = Parse.Object.extend("Course");
 
+document.addEventListener('DOMContentLoaded', () => {
+    const applicantForm = document.getElementById('applicantForm');
 
-var postNum = 0
-query = new Parse.Query(Posts);
+    applicantForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-function loadPosts(numPosts) {
-    query.addAscending("appliedDate")
-    //query.limit(numPosts)
-    //query.skip(postNum)
-    postNum = postNum + numPosts
-    postList = query.find()
-    query.find().then(function(results) {
-        for (let step = 0; step < results.length; step++) {
-            console.log(results[step].get("appliedDate"))
-            if (results[step].get("appliedDate") == null) {
-                continue;
-            }
-            var table = document.getElementById('appTable')
-            
-            // Create a new row
-            var newRow = table.insertRow();
+        const formData = new FormData(applicantForm);
+        const name = formData.get('name');
+        const crn = formData.get('CRN');
+        const courseID = formData.get('courseID');
+        const term = formData.get('Term');
 
-            // Create new cells
-            var nameCell = newRow.insertCell(0);
-            nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var appliedDateCell = newRow.insertCell(1);
-            appliedDateCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var CVCell = newRow.insertCell(2);
-            CVCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var applicationCell = newRow.insertCell(3);
-            applicationCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
+        // Create a new object in your class
+        var myApp = new Courses();
 
-            // Set the cell content
-            nameCell.textContent = results[step].get("username");
-            
-            if (results[step].get("appliedDate")) {
-                var formattedDate = results[step].get("appliedDate").toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric', hour12: true });
-                appliedDateCell.textContent = formattedDate;
-            } else {
-                appliedDateCell.textContent = "N/A"
-            }
-            
-            if (results[step].get("CV")) {
-                // Assuming 'fileLink' contains the URL of the PDF file
-                var fileLink = results[step].get("CV")._url;
-                // Create an anchor element
-                var linkElement = document.createElement('a');
-                // Set the href attribute to the URL of the PDF file
-                linkElement.setAttribute('href', fileLink);
-                linkElement.style.textDecoration = "underline";
-                linkElement.style.color = "blue"; // Adjust the color as needed
-                linkElement.setAttribute('target', '_blank');
-                // Set the text content to "CV.pdf"
-                linkElement.textContent = "CV.pdf";
-                // Append the link
-                CVCell.appendChild(linkElement);
-            } else {
-                CVCell.textContent = "N/A"
-            }
+        // Add values to the array field
+        //myObject.set("arrayField", ["value1", "value2", "value3"]);
+        myApp.set("Name", name)
+        myApp.set("CRN", Number(crn))
+        myApp.set("CourseID", courseID)
+        myApp.set("Term", term)
 
-               
-            // Create a button element
-            var button = document.createElement('button');
-
-            // Set the text content of the button
-            button.textContent = 'View Application';
-
-            //Add Tailwind CSS pill button classes
-            button.className = "bg-red-600 hover:bg-red-600 text-white font-bold py-1 px-2 rounded-full"; 
-
-            // Set the onclick attribute of the button to a JavaScript function
-            button.onclick = function() {
-                window.location.href = window.location.origin+'/ta_committee/application.html?username='+encodeURIComponent(results[step].get("username"));
-            };
-
-
-            // Append the anchor element to the cell
-            applicationCell.appendChild(button);
-                
-            
-            /*replaceUsername = newPost.replaceAll("USERNAMEHERE", results[step].get("poster"))
-            replaceTitle = replaceUsername.replaceAll("TITLEHERE", results[step].get("title"))
-            replaceCaption = replaceTitle.replaceAll("CAPTIONHERE", results[step].get("caption"))
-            replaceImg = replaceCaption.replaceAll("IMGSRCHERE", results[step].get("image")._url)
-            replaceLikes = replaceImg.replaceAll("NUMLIKESHERE", results[step].get("likes").length)
-            replacePostId = replaceLikes.replaceAll("POSTIDHERE", results[step].id)
-
-            if (results[step].get("poster") == currentUsername) {
-                replaceHidden = replacePostId.replaceAll("HIDDENHERE", "")
-            }
-            else {
-                replaceHidden = replacePostId.replaceAll("HIDDENHERE", "hidden")
-            }*/
-        }
+        // Save the object
+        myApp.save().then((object) => {
+          console.log('Object saved successfully with array field:', object);
+        }).catch((error) => {
+          console.error('Error saving object:', error);
+        });
     });
-}
+});
 
-//loadPosts(5);
 
 document.getElementById('courseIDInput').addEventListener('input', function(event) {
     // Code to execute whenever input is changed
@@ -136,11 +70,14 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
     var termCell = newRow.insertCell(3);
     termCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     termCell.textContent = "Term"
+    var delCell = newRow.insertCell(4);
+    delCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    delCell.textContent = "Delete"
     
-    console.log('Input changed:', event.target.value);
+    console.log('Input changed:', event.target.value.toUpperCase());
     courseQuery = new Parse.Query(Courses);
     
-    courseQuery.contains("CourseID", event.target.value);
+    courseQuery.contains("CourseID", event.target.value.toUpperCase());
 
             
     courseQuery.find().then(function(results) {
@@ -164,6 +101,28 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
             idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
             var termCell = newRow.insertCell(3);
             termCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
+            
+            // Create the deny button
+            var denyCell = newRow.insertCell(4);
+            var denyButton = document.createElement('button');
+            denyButton.textContent = 'Delete';
+            denyButton.classList.add('denyButton', 'px-4', 'py-2', 'bg-red-500', 'text-white', 'rounded', 'flex', 'justify-center', 'items-center');
+            denyCell.classList.add('px-4', 'py-2', 'rounded', 'flex', 'justify-center', 'items-center');
+            denyCell.appendChild(denyButton)
+            
+            // Define the event function
+            function handleDenyButtonClick(event) {
+                // Access the row containing the deny button that was clicked
+                var row = event.target.closest('tr');
+
+                // Delete the row from the table
+                row.remove();
+                
+                result.destroy();
+            }
+
+            // Attach the event listener to the deny button
+            denyButton.addEventListener('click', handleDenyButtonClick);
             
             nameCell.textContent = result.get("Name");
             idCell.textContent = result.get("CourseID");
