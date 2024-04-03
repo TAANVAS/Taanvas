@@ -118,19 +118,34 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
     var table = document.getElementById('coursesTable')
 
     
-    for (var i = table.rows.length - 1; i > 0; i--) {
-        table.deleteRow(i);
+    while (table.rows.length > 0) {
+        table.deleteRow(0);
     }
+    
+    var newRow = table.insertRow();
+    // Create new cells
+    var nameCell = newRow.insertCell(0);
+    nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    nameCell.textContent = "Course Name"
+    var crnCell = newRow.insertCell(1);
+    crnCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    crnCell.textContent = "CRN"
+    var idCell = newRow.insertCell(2);
+    idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    idCell.textContent = "Course ID"
+    var termCell = newRow.insertCell(3);
+    termCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    termCell.textContent = "Term"
     
     console.log('Input changed:', event.target.value);
     courseQuery = new Parse.Query(Courses);
     
-    courseQuery.equalTo("CourseID", event.target.value);
-    
-    courseQuery.first().then((result) => {
-        if (result) {
+    courseQuery.contains("CourseID", event.target.value);
+
             
-            
+    courseQuery.find().then(function(results) {
+    // Loop through each object in the results array
+        results.forEach(function(result) {
 
             
             
@@ -143,11 +158,11 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
             // Create new cells
             var nameCell = newRow.insertCell(0);
             nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
-            var idCell = newRow.insertCell(1);
-            idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
             var crnCell = newRow.insertCell(1);
             crnCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
-            var termCell = newRow.insertCell(1);
+            var idCell = newRow.insertCell(2);
+            idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
+            var termCell = newRow.insertCell(3);
             termCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center');
             
             nameCell.textContent = result.get("Name");
@@ -166,14 +181,8 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
                     reportCell.textContent = result2.get("ReportString")
                 }
             })
-            
-            
-            
-        } else {
-            // Object with the specific ZNumber not found
-            console.log("Object not found for the specific Course ID.");
-        }
-    }).catch((error) => {
-        console.error("Error fetching object: ", error);
+        });
     });
+            
+
 });
