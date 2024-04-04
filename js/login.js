@@ -32,6 +32,12 @@ if (type == null) {
 
 document.getElementById("signup").href = "signup.html?type="+type
 
+const mappings = {
+    "IsStaff": "dept_staff",
+    "IsApplicant": "ta_applicant",
+    "IsInstructor": "instructor"
+};
+
 async function login() {
 	const username = document.getElementById('username').value;
 	const password = document.getElementById('password').value;
@@ -39,7 +45,7 @@ async function login() {
 		let user = await Parse.User.logIn(username, password);
 		// login success
 		console.log("User successfully logged in", user);
-		location.href = './'+type+'/'+type+'.html';
+		location.href = './'+mappings[type]+'/'+mappings[type]+'.html';
 	}
 	catch (error) {
 		// login failed
