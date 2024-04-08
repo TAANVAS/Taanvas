@@ -35,7 +35,8 @@ document.getElementById("signup").href = "signup.html?type="+type
 const mappings = {
     "IsStaff": "dept_staff",
     "IsApplicant": "ta_applicant",
-    "IsInstructor": "instructor"
+    "IsInstructor": "instructor",
+    "IsCommittee": "ta_committee",
 };
 
 async function login() {
