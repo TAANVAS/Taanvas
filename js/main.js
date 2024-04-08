@@ -48,16 +48,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     switch (selectedValue) {
       case 'TA Applicant':
-        window.location.href = 'ta_login.html';
+        window.location.href = 'login.html'+'?type='+encodeURIComponent("IsApplicant");
         break;
       case 'Department Staff':
-        window.location.href = 'deptstaff_login.html';
+        window.location.href = 'login.html'+'?type='+encodeURIComponent("IsStaff");
         break;
       case 'TA Committee Member':
-        window.location.href = 'committee_login.html';
+        window.location.href = 'login.html'+'?type='+encodeURIComponent("IsCommittee");
         break;
       case 'Instructor':
-        window.location.href = 'instructor_login.html';
+        window.location.href = 'login.html'+'?type='+encodeURIComponent("IsInstructor");
         break;
       default:
         // handle default option
