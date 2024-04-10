@@ -157,4 +157,4 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
 var event = new Event('input');
 
 // Dispatch the event
-//appIDInput.dispatchEvent(event);
+appIDInput.dispatchEvent(event);
