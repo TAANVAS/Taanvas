@@ -46,15 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+var loading = false
 
 document.getElementById('courseIDInput').addEventListener('input', function(event) {
+    if (loading) {return}
+    loading = true
     // Code to execute whenever input is changed
     var table = document.getElementById('coursesTable')
 
     
-    while (table.rows.length > 0) {
-        table.deleteRow(0);
-    }
+    table.innerHTML = ''
     
     var newRow = table.insertRow();
     // Create new cells
@@ -143,5 +144,12 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
         });
     });
             
-
+    setTimeout(function() {
+        loading = false;
+    }, 100); // Adjust the debounce time as needed
 });
+
+var event = new Event('input');
+
+// Dispatch the event
+courseIDInput.dispatchEvent(event);
