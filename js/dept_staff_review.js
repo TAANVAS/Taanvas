@@ -128,6 +128,25 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                         cells[5].textContent = result.get("QualifiedCourses").join(", ");
                     }
                     
+                    // SELECT ELEMENT
+                    courseQuery = new Parse.Query(Courses);
+                    courseQuery.find().then(function(courseResults) {
+                        var selectElement = cells[6].querySelector('select');
+                        // Define the options you want to insert
+                        var options = courseResults.map(function(course) {
+                            return { text: course.get('CourseID'), value: course.id };
+                        });
+
+                        // Construct the HTML string for options
+                        var optionsHTML = '';
+                        options.forEach(function(option) {
+                            optionsHTML += '<option value="' + option.value + '">' + option.text + '</option>';
+                        });
+
+                        // Set the inner HTML of the select element
+                        selectElement.innerHTML = optionsHTML;
+                    });
+                    
                     // Make the cloned row visible
                     newRow.removeAttribute('hidden');
 
