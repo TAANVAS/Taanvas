@@ -5,7 +5,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 async function signUp() {
 	let user = new Parse.User();
 	user.set("username", document.getElementById("username").value);
-	user.set("Znumber", document.getElementById("Znumber").value);
+    user.set("Znumber", document.getElementById("Znumber").value);
 	user.set("Phone", document.getElementById("Phone").value);
 	user.set("email", document.getElementById("email").value);
 	user.set("password", document.getElementById("password").value);

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Department dashboard</title>
+    <script
+      type="text/javascript"
+      src="https://npmcdn.com/parse/dist/parse.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="../js/dept_staff_review.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<!-- Navigation Bar -->
+	<nav class="bg-blue-950">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex items-center justify-between h-16">
+				<div class="flex items-center">
+					<span class="text-white text-xl">TAANVAS</span>
+				</div>
+				<div class="flex">
+					<a href="../dept_staff/dept_staff.html"
+						class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Department Staff Home</a>
+					<a href="../index.html"
+						class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+					
+				</div>
+			</div>
+		</div>
+	</nav>
+    
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold text-center mb-4">Applications</h1>
+        
+        <div class="flex justify-center items-center bg-gray-100">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <input id="appIDInput" type="text" class="w-full border-gray-300 border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter ZNumber here">
+            </div>
+        </div>
+        
+        <table class="min-w-full bg-white border border-gray-300" id="appTable">
+            <thead class="bg-blue-950">
+                <tr>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Application Name</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Z-Number</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Applied Date</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">CV</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Past TA</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Requested Classes</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Past TA'd Classes</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Recommend Classes</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Accept/Deny</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="firstRow">
+                    <td class="py-2 px-4 border-b border-gray-300">Caleb Panoch</td>
+                    <td class="py-2 px-4 border-b border-gray-300">23496516</td>
+                    <td class="py-2 px-4 border-b border-gray-300">4/10/2024</td>
+                    <td class="py-2 px-4 border-b border-gray-300">View CV</td>
+                    <td class="py-2 px-4 border-b border-gray-300">YES</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
+                    <td class="py-2 px-4 border-b border-gray-300">Operating Systems</td>
+                    
+                    <td class="py-2 px-4 border-b border-gray-300">
+                        <label for="recommendCourses" class="block mb-2">Select Recommended Courses:</label>
+                        <select class="js-example-basic-multiple w-full" multiple="multiple" style="width: 100%;">
+                            <option value="option1">Math</option>
+                            <option value="option2">Science</option>
+                            <option value="option3">PE</option>
+                            <option value="option4">Writing</option>
+                            <option value="option5">Reading</option>
+                        </select>
+                    </td>
+                    
+                    <td class="py-2 px-4 border-b border-gray-300">
+                        <button class="acceptButton px-4 py-2 bg-blue-500 text-white rounded">Pass To Committee</button>
+                        <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Deny</button>
+                    </td> 
+                </tr>
+                <!-- More table rows here -->
+            </tbody>
+        </table>
+    </div>
+    
+
+    
+    
+
+
+	<!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+</body>
+
+</html>

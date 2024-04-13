@@ -40,16 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save the object
         myApp.save().then((object) => {
           console.log('Object saved successfully with array field:', object);
-          window.alert('Your course has been added successfully!');
         }).catch((error) => {
           console.error('Error saving object:', error);
-          window.alert('Error adding course, please try again later.');
         });
     });
 });
 
+var loading = false
 
 document.getElementById('courseIDInput').addEventListener('input', function(event) {
+    if (loading) {return}
+    loading = true
     // Code to execute whenever input is changed
     var table = document.getElementById('coursesTable')
 
@@ -57,6 +58,7 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
     while (table.rows.length > 0) {
         table.deleteRow(0);
     }
+    table.innerHTML = ''
     
     var newRow = table.insertRow();
     // Create new cells
@@ -145,5 +147,12 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
         });
     });
             
-
+    setTimeout(function() {
+        loading = false;
+    }, 100); // Adjust the debounce time as needed
 });
+
+var event = new Event('input');
+
+// Dispatch the event
+courseIDInput.dispatchEvent(event);

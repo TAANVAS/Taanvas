@@ -46,7 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = formData.get('name');
         const email = formData.get('email');
         const previousTA = formData.get('previousTA');
-        const previousCourses = formData.get('previousCourses');
+        let previousCourses = formData.get('previousCourses');
+
+        if (previousTA === 'no') {
+            previousCourses = "No courses";
+        }
+        
         const qualifiedCourses = formData.getAll('qualifiedCourses[]'); // Use getAll for multiple selection
         const cv = formData.get('cv');
         

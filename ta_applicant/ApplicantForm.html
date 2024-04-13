@@ -6,18 +6,24 @@
     <title>TA Applicant Form</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script
+      type="text/javascript"
+      src="https://npmcdn.com/parse/dist/parse.min.js"
+    ></script>
+    <script src="../js/taApp.js" defer></script>
 </head>
 <body class="bg-white">
     <div class="flex flex-col h-screen">
         <!-- Header -->
-        <header class="bg-fau-blue text-white py-4 px-6">
+        <header class="bg-fau-red text-white py-4 px-6">
             <h1 class="text-2xl font-bold">TA Applicant Form</h1>
             <!-- Navigation Links (optional) -->
         </header>
 
         <!-- Main Content -->
         <main class="flex-grow bg-white p-6">
-            <div class="max-w-xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Applicant Form Card -->
                 <div class="bg-white rounded-lg shadow-md p-4">
                     <h2 class="font-semibold text-lg mb-2">TA Application</h2>
@@ -40,25 +46,26 @@
                         </div>
 
                         <label for="qualifiedCourses" class="block mb-2">Select Qualified Courses:</label>
-                        <select class="js-example-basic-multiple w-full" multiple="multiple" style="width: 100%;">
-                            <option value="option1">Math</option>
-                            <option value="option2">Science</option>
-                            <option value="option3">PE</option>
-                            <option value="option4">Writing</option>
-                            <option value="option5">Reading</option>
+                        <select id="qualifiedCourses" name="qualifiedCourses[]" class="js-example-basic-multiple w-full" multiple="multiple" style="width: 100%;">
+				<!-- Replace with real courses from the database -->
+                            <option value="Math">Math</option>
+                            <option value="Science">Science</option>
+                            <option value="PE">PE</option>
+                            <option value="Writing">Writing</option>
+                            <option value="Reading">Reading</option>
                         </select>
 
                         <label for="cv" class="block mb-2">Upload CV:</label>
                         <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-fau-blue">
 
-                        <button type="submit" class="w-full bg-fau-red hover:bg-fau-dark-blue text-white font-bold py-2 px-4 rounded">Submit Application</button>
+                        <button id="submitApplication" type="submit" class="w-full bg-fau-blue hover:bg-fau-dark-blue text-white font-bold py-2 px-4 rounded">Submit Application</button>
                     </form>
                 </div>
-        </div>
+            </div>
         </main>
 
         <!-- Footer -->
-        <footer class="bg-fau-blue text-white py-4 px-6">
+        <footer class="bg-fau-red text-white py-4 px-6">
             <p>&copy; TA Applicant Form</p>
         </footer>
     </div>
@@ -74,48 +81,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $('.js-example-basic-multiple').select2({
-                placeholder: 'Select options',
-                allowClear: true,
-                width: '100%'
-            });
-        });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const previousTASelect = document.getElementById('previousTA');
-            const previousTADetails = document.getElementById('previousTADetails');
-
-            previousTASelect.addEventListener('change', () => {
-                if (previousTASelect.value === 'yes') {
-                    previousTADetails.style.display = 'block';
-                } else {
-                    previousTADetails.style.display = 'none';
-                }
-            });
-
-            const applicantForm = document.getElementById('applicantForm');
-
-            applicantForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                const formData = new FormData(applicantForm);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const previousTA = formData.get('previousTA');
-                const previousCourses = formData.get('previousCourses');
-                const qualifiedCourses = formData.getAll('qualifiedCourses[]'); // Use getAll for multiple selection
-                const cv = formData.get('cv');
-
-                // Handle form submission - you can perform additional validation or submit data to the server here
-                console.log('Name:', name);
-                console.log('Email:', email);
-                console.log('Previously served as TA:', previousTA);
-                console.log('Previous Courses:', previousCourses);
-                console.log('Qualified Courses:', qualifiedCourses);
-                console.log('CV:', cv);
-            });
-        });
     </script>
 </body>
 </html>
