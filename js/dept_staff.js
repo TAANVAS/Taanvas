@@ -40,8 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save the object
         myApp.save().then((object) => {
           console.log('Object saved successfully with array field:', object);
+          window.alert('Your course has been added successfully!');
         }).catch((error) => {
           console.error('Error saving object:', error);
+          window.alert('Error adding course, please try again later.');
         });
     });
 });
