@@ -1,15 +1,18 @@
 Parse.initialize("erMai5U9yDcuMfH47yV3DBkzK5DJu9nLtfuM4VLm", "F5sG1HntHNFByrRpHmzJXylHE1e9PJHBAiqOhNCx");
 Parse.serverURL = "https://parseapi.back4app.com/";
 
-const currentUser = Parse.User.current();
+document.addEventListener('DOMContentLoaded', () => {
+    const currentUser = Parse.User.current();
 
-if (currentUser) {    
-    document.getElementById("username").innerHTML = currentUser.getUsername()
-    currentUsername = currentUser.getUsername()
-} else {
-    //location.href = 'login.html';
-    console.log("NOT LOGGED IN!")
-}
+    if (currentUser) {
+        document.getElementById("username").innerHTML = currentUser.getUsername();
+        const currentUsername = currentUser.getUsername();
+    }
+    else {
+        //location.href = 'login.html';
+        console.log("NOT LOGGED IN!")
+    }
+});
 
 
 var Posts = Parse.Object.extend("User");
