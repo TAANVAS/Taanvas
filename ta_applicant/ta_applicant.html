@@ -7,6 +7,7 @@
 	<title>TA applicant dashboard</title>
 	<script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="../js/ta_dashboard.js" defer></script>
 </head>
 
 <body>
@@ -26,111 +27,22 @@
 	</nav>
 	<!-- main content -->
 	<div class="container mx-auto p-8">
-		<h1 class="text-2xl font-bold text-center mb-4">TA Applicant</h1>
-		<div class="bg-red-500 text-white text-center py-2 px-4 rounded-lg">
-		  <p class="font-bold text-lg">No offers right now.</p>
-		  <p class="mt-2 text-sm">Please check back later.</p>
-		</div>
-		<!-- Accepted Offers heading before table -->
-		<h1 class="text-2xl font-bold text-center mb-4 mt-8">Accepted Offers</h1>
+		<h1 class="text-2xl font-bold text-center mb-4">TA Applicant Dashboard</h1>
 		<!-- start table -->
-		<table class="min-w-full bg-white border border-gray-300">
+		<table id="applicationTable" class="min-w-full bg-white border border-gray-300">
 			<!-- thead -->
 			<thead class="bg-green-500">
 				<tr>
-					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
-					<th class="py-2 px-4 border-b border-gray-300">Z Number</th>
-					<th class="py-2 px-4 border-b border-gray-300">Term</th>
+					<th class="py-2 px-4 border-b border-gray-300">Applicant Name</th>
+					<th class="py-2 px-4 border-b border-gray-300">Qualified Courses</th>
+					<th class="py-2 px-4 border-b border-gray-300">Previous TA</th>
+					<th class="py-2 px-4 border-b border-gray-300">Relevant Courses</th>
 					<th class="py-2 px-4 border-b border-gray-300">Status</th>
-					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
 				</tr>
 			</thead>
 			<!-- tbody -->
 			<tbody>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Accepted</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Discrete Mathematics</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Fall 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Accepted</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<!-- Rejected Offers heading before table -->
-		<h1 class="text-2xl font-bold text-center mb-4 mt-8">Rejected Offers</h1>
-		<!-- start table -->
-		<table class="min-w-full bg-white border border-gray-300">
-			<!-- thead -->
-			<thead class="bg-green-500">
-				<tr>
-					<th class="py-2 px-4 border-b border-gray-300">Subject</th>
-					<th class="py-2 px-4 border-b border-gray-300">Z Number</th>
-					<th class="py-2 px-4 border-b border-gray-300">Term</th>
-					<th class="py-2 px-4 border-b border-gray-300">Status</th>
-					<th class="py-2 px-4 border-b border-gray-300">Actions</th>
-				</tr>
-			</thead>
-			<!-- tbody -->
-			<tbody>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Data struct/Algorithm Analysis</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">3D Modeling and Design</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Spring 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Introduction to VLSI</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Fall 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
-				<tr>
-					<td class="py-2 px-4 border-b border-gray-300">Intro to Internet Computing</td>
-					<td class="py-2 px-4 border-b border-gray-300">Z23455490</td>
-					<td class="py-2 px-4 border-b border-gray-300">Fall 2024</td>
-					<td class="py-2 px-4 border-b border-gray-300">Rejected</td>
-					<td class="py-2 px-4 border-b border-gray-300" style="display: flex;">
-					    <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-					    &nbsp; &nbsp;
-					    <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Decline</button>
-					</td>
-				</tr>
+			<!-- TR classes from JS -->	
 			</tbody>
 		</table>
 	</div>	
@@ -142,32 +54,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<!-- scripts -->
-	<script>
-		const acceptButtons = document.querySelectorAll('.acceptButton');
-		const denyButtons = document.querySelectorAll('.denyButton');
-
-		acceptButtons.forEach(acceptButton => {
-		    acceptButton.addEventListener('click', function() {
-		        acceptButton.textContent = "Accepted";
-		        const relatedDenyButton = acceptButton.parentElement.querySelector('.denyButton');
-		        if (relatedDenyButton) {
-		            relatedDenyButton.style.display = 'none';
-		        }
-		    });
-		});
-
-		denyButtons.forEach(denyButton => {
-		    denyButton.addEventListener('click', function() {
-		        denyButton.textContent = "Declined";
-		        const relatedAcceptButton = denyButton.parentElement.querySelector('.acceptButton');
-		        if (relatedAcceptButton) {
-		            relatedAcceptButton.style.display = 'none';
-		        }
-		    });
-		});
-	</script>
 </body>
 
 </html>
