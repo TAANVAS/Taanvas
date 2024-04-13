@@ -39,7 +39,7 @@
         
         <div class="flex justify-center items-center bg-gray-100">
             <div class="bg-white p-8 rounded-lg shadow-lg">
-                <input id="appIDInput" type="text" class="w-full border-gray-300 border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter Course ID here">
+                <input id="appIDInput" type="text" class="w-full border-gray-300 border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300" placeholder="Enter ZNumber here">
             </div>
         </div>
         
@@ -50,6 +50,7 @@
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">Z-Number</th>
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">Applied Date</th>
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">CV</th>
+                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Past TA</th>
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">Requested Classes</th>
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">Past TA'd Classes</th>
                     <th class="text-white text-left py-2 px-4 border-b border-gray-300">Recommend Classes</th>
@@ -62,6 +63,7 @@
                     <td class="py-2 px-4 border-b border-gray-300">23496516</td>
                     <td class="py-2 px-4 border-b border-gray-300">4/10/2024</td>
                     <td class="py-2 px-4 border-b border-gray-300">View CV</td>
+                    <td class="py-2 px-4 border-b border-gray-300">YES</td>
                     <td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
                     <td class="py-2 px-4 border-b border-gray-300">Operating Systems</td>
                     
@@ -93,42 +95,7 @@
 
 	<!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-	<script>
-        
-	const checkButtons = document.querySelectorAll('.checkButton');
-	const deleteButtons = document.querySelectorAll('.deleteButton');
 
-	checkButtons.forEach(checkButton => {
-	    checkButton.addEventListener('click', function() {
-	        checkButton.textContent = "Checked";
-	        const relatedDeleteButton = checkButton.parentElement.querySelector('.deleteButton');
-	        if (relatedDeleteButton) {
-	            relatedDeleteButton.style.display = 'none';
-	        }
-	    });
-	});
-
-	deleteButtons.forEach(deleteButton => {
-	    deleteButton.addEventListener('click', function() {
-	        const tr = this.closest('tr');
-	        if (tr) {
-	            tr.remove();
-	        }
-
-	        const table = document.getElementById('courses');
-	        if (table.querySelectorAll('tr').length === 1) {
-	            table.innerHTML = `
-	                <h2 class="text-xl font-semibold mb-4">Department Staff</h2> 
-	                <div class="bg-red-500 text-white text-center py-2 px-4 rounded-lg">
-	                    <p class="font-bold text-lg">All Courses have been deleted.</p>
-	                    <p class="mt-2 text-sm">Please refresh the page.</p>
-	                </div>
-	            `;
-	        } 
-	    });
-	}); 
-
-	</script>
 </body>
 
 </html>

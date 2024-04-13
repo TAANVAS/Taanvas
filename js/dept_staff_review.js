@@ -10,7 +10,6 @@ if (currentUser) {
     console.log("NOT LOGGED IN!")
 }
 
-
 var Users = Parse.Object.extend("User");
 var Reports = Parse.Object.extend("Report");
 var Courses = Parse.Object.extend("Course");
@@ -27,6 +26,10 @@ $(document).ready(function() {
 var loading = false
 
 var rowCopy = firstRow.cloneNode(true);
+
+var event = new Event('input');
+
+
 
 document.getElementById('appIDInput').addEventListener('input', function(event) {
     if (loading) {return}
@@ -55,14 +58,17 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
     crnCell.textContent = "Applied Date"
     var idCell = newRow.insertCell(4);
     idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
+    idCell.textContent = "Past TA"
+    var idCell = newRow.insertCell(5);
+    idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     idCell.textContent = "Relevant Courses"
-    var termCell = newRow.insertCell(5);
+    var termCell = newRow.insertCell(6);
     termCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     termCell.textContent = "Qualified Courses"
-    var delCell = newRow.insertCell(6);
+    var delCell = newRow.insertCell(7);
     delCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     delCell.textContent = "Recommend Course"
-    var delCell = newRow.insertCell(7);
+    var delCell = newRow.insertCell(8);
     delCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     delCell.textContent = "Accept/Deny";
     
@@ -77,7 +83,8 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
             console.log(firstResult.get("username"));
             appQuery = new Parse.Query(Applications);
 
-            appQuery.contains("User", String(firstResult.id));
+            appQuery.equalTo("Status", 0)
+            .contains("User", String(firstResult.id))
 
             appQuery.find().then(function(results) {
                 // Loop through each object in the results array
@@ -85,14 +92,76 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                     console.log("well, we got this far...")
                     // Object with the specific ZNumber found
                     console.log(firstResult.username);
-
                     
                     // Find the first row and clone it
                     var firstRow = document.getElementById('firstRow');
                     var newRow = rowCopy.cloneNode(true); // true to clone all descendants as well
-
+                    
                     // Get all the cells in the cloned row
                     var cells = newRow.querySelectorAll('td');
+
+                    // Assuming indexing starts from 0, cell 8 is at index 8
+                    var cell8 = cells[8];
+
+                    // Get all the buttons within cell 8
+                    var buttonsInCell8 = cell8.querySelectorAll('button');
+                    console.log(buttonsInCell8)
+                    
+                    // Attach event listener for the first button
+                    buttonsInCell8[0].addEventListener('click', function() {
+                        // Event handling code for the first button
+                        console.log('Pass To Committee');
+                        
+                        //Status 1 == pass to committee
+                        result.set("Status", 1);
+
+                        // Select all <option> elements within the <select> element
+                        var options = cells[7].querySelectorAll('option:checked');
+
+                        var recommendations = ""
+                        // Loop through the options and access their values and text content
+                        options.forEach(function(option) {
+                            var optionValue = option.value;
+                            var optionText = option.textContent;
+
+                            recommendations = recommendations + optionText + ", "
+                        });
+                        recommendations = recommendations.slice(0, -2);
+                        console.log("Recommend: "+recommendations)
+                        result.set("RecommendedCourses", recommendations);
+
+                        // Save the updated object
+                        result.save().then(function(updatedResult) {
+                            // Handle success if needed
+                            console.log("Status updated successfully for object with ID: ", updatedResult.id);
+                        }).catch(function(error) {
+                            // Handle error
+                            console.error("Error updating status for object with ID: ", result.id, ", Error: ", error);
+                        });
+                        appIDInput.dispatchEvent(event);
+                        alert("Passed Application To Committee")
+                        
+                    });
+
+                    // Attach event listener for the second button
+                    buttonsInCell8[1].addEventListener('click', function() {
+                        // Event handling code for the second button
+                        console.log('Deny');
+                        result.set("Status", -1);
+                        
+                        // Save the updated object
+                        result.save().then(function(updatedResult) {
+                            // Handle success if needed
+                            console.log("Status updated successfully for object with ID: ", updatedResult.id);
+                        }).catch(function(error) {
+                            // Handle error
+                            console.error("Error updating status for object with ID: ", result.id, ", Error: ", error);
+                        });
+                        
+                        // Reload Table
+                        appIDInput.dispatchEvent(event);
+                        alert("Denied Application")
+                    });
 
                     // Fill each cell with corresponding data
                     cells[0].textContent = firstResult.get("username")
@@ -123,15 +192,16 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                         cells[3].textContent = "N/A"
                     }
                     
-                    cells[4].textContent = result.get("RelevantCourses")
+                    cells[4].textContent = result.get("PreviousTA").toUpperCase()
+                    cells[5].textContent = result.get("RelevantCourses")
                     if (result.get("QualifiedCourses")) {
-                        cells[5].textContent = result.get("QualifiedCourses").join(", ");
+                        cells[6].textContent = result.get("QualifiedCourses").join(", ");
                     }
                     
                     // SELECT ELEMENT
                     courseQuery = new Parse.Query(Courses);
                     courseQuery.find().then(function(courseResults) {
-                        var selectElement = cells[6].querySelector('select');
+                        var selectElement = cells[7].querySelector('select');
                         // Define the options you want to insert
                         var options = courseResults.map(function(course) {
                             return { text: course.get('CourseID'), value: course.id };
@@ -172,8 +242,6 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
         loading = false;
     }, 100); // Adjust the debounce time as needed
 });
-
-var event = new Event('input');
 
 // Dispatch the event
 appIDInput.dispatchEvent(event);
