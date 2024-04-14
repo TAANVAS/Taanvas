@@ -52,10 +52,10 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
     zNumberCell.textContent = "Z-Number"
     var cvCell = newRow.insertCell(2);
     cvCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
-    cvCell.textContent = "CV"
+    cvCell.textContent = "Applied Date"
     var crnCell = newRow.insertCell(3);
     crnCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
-    crnCell.textContent = "Applied Date"
+    crnCell.textContent = "CV"
     var idCell = newRow.insertCell(4);
     idCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300', 'text-center', 'text-white', 'bg-blue-950');
     idCell.textContent = "Past TA"
