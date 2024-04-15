@@ -42,15 +42,19 @@ function loadPosts(numPosts) {
             // Create new cells
             var nameCell = newRow.insertCell(0);
             nameCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var appliedDateCell = newRow.insertCell(1);
+            var znumberCell = newRow.insertCell(1);
+            znumberCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
+            var appliedDateCell = newRow.insertCell(2);
             appliedDateCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var CVCell = newRow.insertCell(2);
+            var CVCell = newRow.insertCell(3);
             CVCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
-            var applicationCell = newRow.insertCell(3);
+            var applicationCell = newRow.insertCell(4);
             applicationCell.classList.add('py-2', 'px-4', 'border-b', 'border-gray-300');
 
             // Set the cell content
             nameCell.textContent = results[step].get("username");
+            // Set Znumber cell
+            znumberCell.textContent = results[step].get("Znumber");
             
             if (results[step].get("appliedDate")) {
                 var formattedDate = results[step].get("appliedDate").toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: '2-digit', hour: 'numeric', minute: 'numeric', hour12: true });
@@ -97,19 +101,7 @@ function loadPosts(numPosts) {
             applicationCell.appendChild(button);
                         
             
-            /*replaceUsername = newPost.replaceAll("USERNAMEHERE", results[step].get("poster"))
-            replaceTitle = replaceUsername.replaceAll("TITLEHERE", results[step].get("title"))
-            replaceCaption = replaceTitle.replaceAll("CAPTIONHERE", results[step].get("caption"))
-            replaceImg = replaceCaption.replaceAll("IMGSRCHERE", results[step].get("image")._url)
-            replaceLikes = replaceImg.replaceAll("NUMLIKESHERE", results[step].get("likes").length)
-            replacePostId = replaceLikes.replaceAll("POSTIDHERE", results[step].id)
-
-            if (results[step].get("poster") == currentUsername) {
-                replaceHidden = replacePostId.replaceAll("HIDDENHERE", "")
-            }
-            else {
-                replaceHidden = replacePostId.replaceAll("HIDDENHERE", "hidden")
-            }*/
+            
         }
     });
 }
@@ -148,24 +140,6 @@ document.getElementById('ZNumberInput').addEventListener('input', function(event
             // Set the cell content
             nameCell.textContent = result.get("username");
             
-            if (!result.get("CV")) {
-                // Assuming 'fileLink' contains the URL of the PDF file
-                var fileLink = results[step].get("CV")._url;
-                // Create an anchor element
-                var linkElement = document.createElement('a');
-                // Set the href attribute to the URL of the PDF file
-                linkElement.setAttribute('href', fileLink);
-                linkElement.style.textDecoration = "underline";
-                linkElement.style.color = "blue"; // Adjust the color as needed
-                linkElement.setAttribute('target', '_blank');
-                // Set the text content to "CV.pdf"
-                linkElement.textContent = "CV.pdf";
-                // Append the link
-                CVCell.appendChild(linkElement);
-            } else {
-                //CVCell.textContent = "N/A"
-            }
-    
             reportsQuery = new Parse.Query(Reports);
             console.log("OBJECTID: "+result.id)
             const userPointer = Parse.User.createWithoutData(result.id);
