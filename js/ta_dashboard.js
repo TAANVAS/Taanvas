@@ -27,7 +27,23 @@ if (currentUser) {
             qualifiedCourses.forEach((course) => {
                 console.log(course);
                 const row = document.createElement('tr');
-                const statusText = Status > -1 ? "Accepted" : "Denied";
+
+                switch (Status) {
+                    case -1:
+                        statusText = "Denied";
+                        break;
+                    case 0:
+                        statusText = "Pending Review";
+                        break;
+                    case 1:
+                        statusText = "Committee Staff Recommended";
+                        break;
+                    case 2:
+                        statusText = "Approved";
+                        break;
+                    default:
+                        statusText = "Error Status";
+                } 
 
                 row.innerHTML = `
                     <td class="py-2 px-4 border-b border-gray-300 text-center">${Name}</td>
