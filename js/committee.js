@@ -113,19 +113,19 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                         result.set("Status", 2);
 
                         // Select all <option> elements within the <select> element
-                        var options = cells[7].querySelectorAll('option:checked');
+                        var options = cells[8].querySelectorAll('option:checked');
 
-                        var recommendations = ""
+                        var accepted = ""
                         // Loop through the options and access their values and text content
                         options.forEach(function(option) {
                             var optionValue = option.value;
                             var optionText = option.textContent;
 
-                            recommendations = recommendations + optionText + ", "
+                            accepted = accepted + optionText + ", "
                         });
-                        recommendations = recommendations.slice(0, -2);
-                        console.log("Recommend: "+recommendations)
-                        result.set("RecommendedCourses", recommendations);
+                        accepted = accepted.slice(0, -2);
+                        console.log("Accepted Course: "+accepted)
+                        result.set("AcceptedCourse", accepted);
 
                         // Save the updated object
                         result.save().then(function(updatedResult) {
@@ -136,7 +136,7 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                             console.error("Error updating status for object with ID: ", result.id, ", Error: ", error);
                         });
                         appIDInput.dispatchEvent(event);
-                        alert("Passed Application To Committee")
+                        alert("Accepted, Sent Application To Student")
                         
                     });
 
@@ -198,12 +198,34 @@ document.getElementById('appIDInput').addEventListener('input', function(event) 
                     // Recommended
                     cells[7].textContent = result.get("RecommendedCourses")
                     
+                    // Dynamically change course table
+                    courseQuery = new Parse.Query(Courses);
+                    courseQuery.find().then(function(courseResults) {
+                        var selectElement = cells[8].querySelector('select');
+                        // Define the options you want to insert
+                        var options = courseResults.map(function(course) {
+                            return { text: course.get('CourseID'), value: course.id };
+                        });
+
+                        // Construct the HTML string for options
+                        var optionsHTML = '';
+                        options.forEach(function(option) {
+                            optionsHTML += '<option value="' + option.value + '">' + option.text + '</option>';
+                        });
+
+                        // Set the inner HTML of the select element
+                        selectElement.innerHTML = optionsHTML;
+                    });
+                    
+                    
                     // Make the cloned row visible
                     newRow.removeAttribute('hidden');
 
                     // Append the cloned row to the table's tbody
                     var tbody = document.querySelector('#appTable tbody');
                     tbody.appendChild(newRow);
+                    
+                    
                     
                     $(document).ready(function() {
                         $('.js-example-basic-multiple').each(function() {
