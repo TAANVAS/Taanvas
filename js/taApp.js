@@ -82,8 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Save the object
             myApp.save().then((object) => {
               console.log('Object saved successfully with array field:', object);
+              window.alert("Application submitted successfully!");
             }).catch((error) => {
               console.error('Error saving object:', error);
+              window.alert("Error submitting application!");
             });
         });
     });
