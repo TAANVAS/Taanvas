@@ -25,6 +25,27 @@ $(document).ready(function() {
     });
 });
 
+// Query to fetch courses from the Course class
+const Course = Parse.Object.extend("Course");
+const courseQuery = new Parse.Query(Course);
+courseQuery.find()
+    .then(courses => {
+        // Populate the select dropdown with courses
+        const selectElement = $('#qualifiedCourses');
+        courses.forEach(course => {
+            selectElement.append(`<option value="${course.get('Name')}">${course.get('Name')}</option>`);
+        });
+        // Initialize Select2 after options are populated
+        $('.js-example-basic-multiple').select2({
+            placeholder: 'Select options',
+            allowClear: true,
+            width: '100%'
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching courses:', error);
+    });
+
 document.addEventListener('DOMContentLoaded', () => {
     const previousTASelect = document.getElementById('previousTA');
     const previousTADetails = document.getElementById('previousTADetails');
