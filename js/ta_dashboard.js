@@ -205,8 +205,10 @@ appQuery.find().then(function(results) {
 
             
         }
-        else {
-             cells[5].textContent = statusDictionary[result.get("Status")]
+        else if (result.get("Status") == 3) {
+             cells[5].textContent =  statusDictionary[result.get("Status")] + "\n" + result.get("AcceptedCourse")
+        } else {
+              cells[5].textContent = statusDictionary[result.get("Status")]                                                              
         }
         
         
