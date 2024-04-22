@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentUser = Parse.User.current();
 
     if (currentUser) {
-        document.getElementById("username").innerHTML = currentUser.getUsername();
-        const currentUsername = currentUser.getUsername();
-    }
-    else {
-        //location.href = 'login.html';
+        if (!currentUser.get("IsCommittee")) {
+            alert("You are not logged in as a Committee Member.")
+            location.href = '../index.html'
+        }
+    } else {
+        alert("You are not logged in.")
+        location.href = '../login.html';
         console.log("NOT LOGGED IN!")
     }
 });

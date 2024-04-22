@@ -4,7 +4,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 const currentUser = Parse.User.current();
 
 if (currentUser) {
-    if (!currentUser.get("IsApplicant")) {
+    if (!currentUser.get("IsCommittee")) {
         alert("You are not logged in as a Committee Member.")
         location.href = '../index.html'
     }
