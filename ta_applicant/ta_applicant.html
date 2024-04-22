@@ -28,12 +28,44 @@
 	<!-- main content -->
 	<div class="container mx-auto p-8">
 		<h1 class="text-2xl font-bold text-center mb-4">TA Applicant Dashboard</h1>
+        
+        <h1 class="text-2xl font-bold text-center mb-4">Pending Applications</h1>
 		<!-- start table -->
-		<table id="applicationTable" class="min-w-full bg-white border border-gray-300">
+		<table id="pendingTable" class="min-w-full bg-white border border-gray-300">
 			<!-- thead -->
 			<thead class="bg-blue-950">
 				<tr>
 					<th class="py-2 px-4 border-b border-gray-300 text-white">Applicant Name</th>
+                    <th class="py-2 px-4 border-b border-gray-300 text-white">Applied Date</th>
+					<th class="py-2 px-4 border-b border-gray-300 text-white">Qualified Courses</th>
+					<th class="py-2 px-4 border-b border-gray-300 text-white">Previous TA</th>
+					<th class="py-2 px-4 border-b border-gray-300 text-white">Relevant Courses</th>
+					<th class="py-2 px-4 border-b border-gray-300 text-white">Status</th>
+
+				</tr>
+			</thead>
+			<!-- tbody -->
+            <tbody>
+                <tr hidden id="firstRow">
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb Panoch</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">2022-12-01</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">N/A</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Yes</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">N/A</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Pending</td>
+                </tr>
+                <!-- More table rows here -->
+            </tbody>
+		</table>
+
+		<h1 class="text-2xl font-bold text-center mb-4">Current/Past Offers</h1>
+		<!-- start table -->
+		<table id="currentAndPastTable" class="min-w-full bg-white border border-gray-300">
+			<!-- thead -->
+			<thead class="bg-blue-950">
+				<tr>
+					<th class="py-2 px-4 border-b border-gray-300 text-white">Applicant Name</th>
+          <th class="py-2 px-4 border-b border-gray-300 text-white">Applied Date</th>
 					<th class="py-2 px-4 border-b border-gray-300 text-white">Qualified Courses</th>
 					<th class="py-2 px-4 border-b border-gray-300 text-white">Previous TA</th>
 					<th class="py-2 px-4 border-b border-gray-300 text-white">Relevant Courses</th>
@@ -41,9 +73,18 @@
 				</tr>
 			</thead>
 			<!-- tbody -->
-			<tbody>
-			<!-- TR classes from JS -->	
-			</tbody>
+            <tbody>
+                <tr hidden id="firstRow2">
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb Panoch</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">2022-12-01</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">N/A</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">Yes</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">N/A</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">                        <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
+                        <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Deny</button></td>
+                </tr>
+                <!-- More table rows here -->
+            </tbody>
 		</table>
 	</div>	
 	<!-- footer -->
