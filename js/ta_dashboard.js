@@ -11,7 +11,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 
 const currentUser = Parse.User.current();
 
-if (currentUser) {    
+if (currentUser) {
 
 } else {
     //location.href = 'login.html';
@@ -94,8 +94,6 @@ appQuery.find().then(function(results) {
         // Append the cloned row to the table's tbody
         var tbody = document.querySelector('#pendingTable tbody');
         tbody.appendChild(newRow);
-
-
     });
 });
 
@@ -224,3 +222,5 @@ appQuery.find().then(function(results) {
 
     });
 });
+console.log("Script has been loaded");
+
