@@ -40,8 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save the object
         myApp.save().then((object) => {
           console.log('Object saved successfully with array field:', object);
+          window.alert('Your course has been added successfully!');
         }).catch((error) => {
           console.error('Error saving object:', error);
+          window.alert('Error adding course, please try again later.');
         });
     });
 });
@@ -55,6 +57,9 @@ document.getElementById('courseIDInput').addEventListener('input', function(even
     var table = document.getElementById('coursesTable')
 
     
+    while (table.rows.length > 0) {
+        table.deleteRow(0);
+    }
     table.innerHTML = ''
     
     var newRow = table.insertRow();

@@ -13,7 +13,6 @@ const currentUser = Parse.User.current();
 
 if (currentUser) {    
 
-
 } else {
     //location.href = 'login.html';
     console.log("NOT LOGGED IN!")

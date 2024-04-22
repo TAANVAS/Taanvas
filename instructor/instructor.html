@@ -1,112 +1,159 @@
-<html>
-<!-- Author: Ayesha Fatima -->
-<!-- Dashboard Layout -->
-<script src="https://cdn.tailwindcss.com"></script>
-<div class="flex flex-col h-screen">
-    <!-- Header -->
-    <header class="bg-blue-950 text-white py-4 px-6">
-        <h1 class="text-2xl font-bold">Instructor Dashboard</h1>
-        <!-- Navigation Links -->
-        <nav class="mt-2">
-            <a href="../index.html" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Home</a>
-            <a href="C:\Users\af181\OneDrive\Desktop\tailwindstarter\disk\courses.html" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Courses</a>
-            <!-- a href="#" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">TA Reports</a -->
-            <a href="#" class="text-gray-300 hover:text-white hover:bg-gray-700 py-1 px-3 rounded-md">Logout</a>
-        </nav>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- Main Content -->
-    <main class="flex-grow bg-gray-100 p-6">
-        <!-- Course List -->
-        <section>
-            <h2 class="text-xl font-semibold mb-4">Your Courses</h2>
-            <div class="grid grid-cols-3 gap-4">
-                <!-- Course Card -->
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Intro to Computer Science</h3>
-                    <p class="text-gray-600">Introducting core concepts about Computer Science.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAANVAS Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header>
+            <nav class="bg-blue-950">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex items-center">
+                            <span class="text-white text-xl">TAANVAS</span>
+                        </div>
+                        <div class="flex">
+                            <!-- link to application file -->
+                            <a href="../index.html"
+                                class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Data struct/Algorithm Analysis</h3>
-                    <p class="text-gray-600">This class is about data structures used in Computer Science interviews.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow bg-gray-100 p-6">
+            <!-- Course List -->
+            <section>
+                <h2 class="text-xl font-semibold mb-4">Your Courses</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <!-- Course Cards -->
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <h3 class="font-semibold text-lg mb-2">Intro to Computer Science</h3>
+                        <p class="text-gray-600">Introducting core concepts about Computer Science.</p>
+                        <button onclick="addTA('Intro to Computer Science')"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                            Add TA
+                        </button>
+                        <button onclick="scrollToPerformance('Intro to Computer Science')"
+                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
+                            View TA
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <h3 class="font-semibold text-lg mb-2">Data struct/Algorithm Analysis</h3>
+                        <p class="text-gray-600">This class is about data structures used in Computer Science
+                            interviews.</p>
+                        <button onclick="addTA('Data struct/Algorithm Analysis')"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                            Add TA
+                        </button>
+                        <button onclick="scrollToPerformance('Data struct/Algorithm Analysis')"
+                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
+                            View TA
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4">
+                        <h3 class="font-semibold text-lg mb-2">3D Modeling and Design</h3>
+                        <p class="text-gray-600">New concepts about Modeling with AutoCAD software.</p>
+                        <button onclick="addTA('3D Modeling and Design')"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                            Add TA
+                        </button>
+                        <button onclick="scrollToPerformance('3D Modeling and Design')"
+                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
+                            View TA
+                        </button>
+                    </div>
+                    <!-- Add more course cards -->
                 </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">3D Modeling and Design</h3>
-                    <p class="text-gray-600">New concepts about Modeling with AutoCAD software.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Intro to Internet Computing</h3>
-                    <p class="text-gray-600">Concepts about Web Development with HTML, CSS and JavaScript</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Introduction to VLSI</h3>
-                    <p class="text-gray-600">Introduction to Very Large Scale Integration (VLSI) using PSPICE.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Discrete Mathematics</h3>
-                    <p class="text-gray-600">Math for Computer Science</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Introduction to Programming in C</h3>
-                    <p class="text-gray-600">Learn how to Program in C with loops, conditions, functions, and structs.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">Cryptography</h3>
-                    <p class="text-gray-600">Learn about encryption, decryption, and public-key crypto.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="font-semibold text-lg mb-2">iOS Development with Swift</h3>
-                    <p class="text-gray-600">Learn how to program iPhone applications using the Swift programming language.</p>
-                    <button class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full">
-                      View Details
-                    </button>
-                </div>
-            </div>
-            <!-- New Application heading before table -->
-            &nbsp;<h2 class="text-xl font-semibold mb-4">TA Performance Reports</h2> 
-            <table class="min-w-full bg-white border border-gray-300">
-            <!-- thead -->
-            <thead class="bg-blue-950">
-                <tr>
-                    <th class="py-2 px-4 border-b border-gray-300 text-white">TA Name</th>
-                    <th class="py-2 px-4 border-b border-gray-300 text-white">Performance</th>
-                </tr>
-            </thead>
-            <!-- tbody -->
-            <tbody>
-                <tr>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">Caleb</td>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
-                </tr>
-            </tbody>
-        </section>
+            </section>
+
+            <!-- TA Performance Reports -->
+            <h2 class="text-xl font-semibold mb-4">TA Performance Reports</h2>
+            <table id="performanceTable" class="min-w-full bg-white border border-gray-300">
+                <!-- thead -->
+                <thead class="bg-blue-950">
+                    <tr>
+                        <th class="py-2 px-4 border-b border-gray-300 text-white">TA Name</th>
+                        <th class="py-2 px-4 border-b border-gray-300 text-white">Course</th>
+                        <th class="py-2 px-4 border-b border-gray-300 text-white">Performance</th>
+                        <th class="py-2 px-4 border-b border-gray-300 text-white">Instructor Feedback</th>
+                    </tr>
+                </thead>
+                <!-- tbody -->
+                <tbody>
+                    <tr id="Intro to Computer Science">
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Kasi</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Intro to Computer Science</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
+                                placeholder="Enter feedback"></td>
+                    </tr>
+                    <tr id="Data struct/Algorithm Analysis">
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Data struct/Algorithm Analysis</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
+                                placeholder="Enter feedback"></td>
+                    </tr>
+                    <tr id="3D Modeling and Design">
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">John Doe</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">3D Modeling and Design</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
+                                placeholder="Enter feedback"></td>
+                    </tr>
+                    <!-- Add more rows for additional courses -->
+                </tbody>
+            </table>
+
+            <!-- Instructor Feedback -->
+            <!-- No need for a separate section for instructor feedback as it's included in the table -->
         </main>
+    </div>
+
+    <script>
+        function scrollToPerformance(courseName) {
+            var element = document.getElementById(courseName);
+            if (element) {
+                // Scroll to the row
+                element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+                // Highlight the row for a few seconds
+                element.style.backgroundColor = "#f0e68c"; // Light yellow
+                setTimeout(function () {
+                    element.style.backgroundColor = ""; // Reset to default background color
+                }, 3000); // 3000 milliseconds = 3 seconds
+            }
+        }
+
+        function addTA(courseName) {
+            var taName = prompt("Enter TA Name:");
+            if (taName !== null && taName !== "") {
+                var performanceTable = document.getElementById("performanceTable").getElementsByTagName('tbody')[0];
+                var performance = prompt("Enter TA Performance (e.g., Excellent, Good, Fair):");
+                var feedback = prompt("Enter Instructor Feedback:");
+                var newRow = performanceTable.insertRow();
+                newRow.innerHTML = `
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">${taName}</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">${courseName}</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">${performance}</td>
+                    <td class="py-2 px-4 border-b border-gray-300 text-center">${feedback}</td>
+                `;
+            }
+        }
+    </script>
+</body>
+
 </html>

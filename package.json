@@ -18,5 +18,8 @@
   "homepage": "https://github.com/TAANVAS/taanvas#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   }
 }
