@@ -3,10 +3,14 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 
 const currentUser = Parse.User.current();
 
-if (currentUser) {    
-
+if (currentUser) {
+    if (!currentUser.get("IsStaff")) {
+        alert("You are not logged in as Department Staff.")
+        location.href = '../index.html'
+    }
 } else {
-    //location.href = 'login.html';
+    alert("You are not logged in.")
+    location.href = '../login.html';
     console.log("NOT LOGGED IN!")
 }
 
