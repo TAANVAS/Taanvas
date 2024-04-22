@@ -9,6 +9,8 @@ if (currentUser) {
     // all applications are stored in the 'results' array
     const tableBody = document.querySelector('#applicationTable tbody');
 
+    query.equalTo("User", currentUser); // Modify the query to compare pointers
+    
     query.find().then((results) => {
         for (let i = 0; i < results.length; i++) {
             const object = results[i];
