@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAANVAS Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
     <div class="flex flex-col h-screen">
         <!-- Header -->
@@ -20,9 +18,7 @@
                         </div>
                         <div class="flex">
                             <!-- link to application file -->
-                            <a href="../index.html"
-                                class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home
-                            </a>
+                            <a href="../index.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         </div>
                     </div>
                 </div>
@@ -34,46 +30,8 @@
             <!-- Course List -->
             <section>
                 <h2 class="text-xl font-semibold mb-4">Your Courses</h2>
-                <div class="grid grid-cols-3 gap-4">
-                    <!-- Course Cards -->
-                    <div class="bg-white rounded-lg shadow-md p-4">
-                        <h3 class="font-semibold text-lg mb-2">Intro to Computer Science</h3>
-                        <p class="text-gray-600">Introducting core concepts about Computer Science.</p>
-                        <button onclick="addTA('Intro to Computer Science')"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                            Add TA
-                        </button>
-                        <button onclick="scrollToPerformance('Intro to Computer Science')"
-                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
-                            View TA
-                        </button>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-4">
-                        <h3 class="font-semibold text-lg mb-2">Data struct/Algorithm Analysis</h3>
-                        <p class="text-gray-600">This class is about data structures used in Computer Science
-                            interviews.</p>
-                        <button onclick="addTA('Data struct/Algorithm Analysis')"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                            Add TA
-                        </button>
-                        <button onclick="scrollToPerformance('Data struct/Algorithm Analysis')"
-                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
-                            View TA
-                        </button>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md p-4">
-                        <h3 class="font-semibold text-lg mb-2">3D Modeling and Design</h3>
-                        <p class="text-gray-600">New concepts about Modeling with AutoCAD software.</p>
-                        <button onclick="addTA('3D Modeling and Design')"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                            Add TA
-                        </button>
-                        <button onclick="scrollToPerformance('3D Modeling and Design')"
-                            class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
-                            View TA
-                        </button>
-                    </div>
-                    <!-- Add more course cards -->
+                <div class="grid grid-cols-3 gap-4" id="courseList">
+                    <!-- Course Cards will be dynamically populated here -->
                 </div>
             </section>
 
@@ -91,69 +49,113 @@
                 </thead>
                 <!-- tbody -->
                 <tbody>
-                    <tr id="Intro to Computer Science">
+                    <!-- Performance data will be dynamically populated here -->
+                    <tbody>
+                    <tr id="Deep Learning">
                         <td class="py-2 px-4 border-b border-gray-300 text-center">Kasi</td>
-                        <td class="py-2 px-4 border-b border-gray-300 text-center">Intro to Computer Science</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Deep Learning</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
                                 placeholder="Enter feedback"></td>
                     </tr>
-                    <tr id="Data struct/Algorithm Analysis">
+                    <tr id="Programming in Go">
                         <td class="py-2 px-4 border-b border-gray-300 text-center">Jane Smith</td>
-                        <td class="py-2 px-4 border-b border-gray-300 text-center">Data struct/Algorithm Analysis</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Programming in Go</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center">Good</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
                                 placeholder="Enter feedback"></td>
                     </tr>
-                    <tr id="3D Modeling and Design">
+                    <tr id="Intermediate Algebra">
                         <td class="py-2 px-4 border-b border-gray-300 text-center">John Doe</td>
-                        <td class="py-2 px-4 border-b border-gray-300 text-center">3D Modeling and Design</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Intermediate Algebra</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
+                                placeholder="Enter feedback"></td>
+                    </tr>
+                         <tr id="Cloud Computing">
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Radan</td>
+                        <td class="py-2 px-4 border-b border-gray-300 text-center">Cloud Computing</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center">Excellent</td>
                         <td class="py-2 px-4 border-b border-gray-300 text-center"><input type="text"
                                 placeholder="Enter feedback"></td>
                     </tr>
                     <!-- Add more rows for additional courses -->
                 </tbody>
+                </tbody>
             </table>
-
-            <!-- Instructor Feedback -->
-            <!-- No need for a separate section for instructor feedback as it's included in the table -->
         </main>
     </div>
 
-    <script>
-        function scrollToPerformance(courseName) {
-            var element = document.getElementById(courseName);
-            if (element) {
-                // Scroll to the row
-                element.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-                // Highlight the row for a few seconds
-                element.style.backgroundColor = "#f0e68c"; // Light yellow
-                setTimeout(function () {
-                    element.style.backgroundColor = ""; // Reset to default background color
-                }, 3000); // 3000 milliseconds = 3 seconds
-            }
-        }
+    <script
+      type="text/javascript"
+      src="https://npmcdn.com/parse/dist/parse.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  <script>
+    Parse.initialize("erMai5U9yDcuMfH47yV3DBkzK5DJu9nLtfuM4VLm", "F5sG1HntHNFByrRpHmzJXylHE1e9PJHBAiqOhNCx");
+    Parse.serverURL = "https://parseapi.back4app.com/";
 
-        function addTA(courseName) {
-            var taName = prompt("Enter TA Name:");
-            if (taName !== null && taName !== "") {
-                var performanceTable = document.getElementById("performanceTable").getElementsByTagName('tbody')[0];
-                var performance = prompt("Enter TA Performance (e.g., Excellent, Good, Fair):");
-                var feedback = prompt("Enter Instructor Feedback:");
-                var newRow = performanceTable.insertRow();
-                newRow.innerHTML = `
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">${taName}</td>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">${courseName}</td>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">${performance}</td>
-                    <td class="py-2 px-4 border-b border-gray-300 text-center">${feedback}</td>
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentUser = Parse.User.current();
+
+        if (currentUser) {
+            if (!currentUser.get("IsInstructor")) {
+                alert("You are not logged in as an Instructor.")
+                location.href = '../index.html'
+            }
+        } else {
+            alert("You are not logged in.")
+            location.href = '../login.html';
+            console.log("NOT LOGGED IN!")
+        }
+      
+        // Fetch data from Back4App
+        fetch('https://parseapi.back4app.com/classes/Course', {
+            headers: {
+                'X-Parse-Application-Id': 'erMai5U9yDcuMfH47yV3DBkzK5DJu9nLtfuM4VLm',
+                'X-Parse-REST-API-Key': '18mz17yv8Pb7KyBfmoLRKVbaZH5F1BObUubEreiF'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const courseList = document.getElementById('courseList');
+            data.results.forEach(course => {
+                const courseCard = document.createElement('div');
+                courseCard.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'p-4');
+                courseCard.innerHTML = `
+                    <h3 class="font-semibold text-lg mb-2">${course.Name} (ID: ${course.CourseID})</h3>
+                    
+                    
+                   
+                    <button onclick="scrollToPerformance('${course.Name}')"
+                        class="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full ml-2">
+                        View TA
+                    </button>
                 `;
-            }
-        }
-    </script>
-</body>
+                courseList.appendChild(courseCard);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    });
 
+    function scrollToPerformance(courseName) {
+        var element = document.getElementById(courseName);
+        if (element) {
+            // Scroll to the row
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            // Highlight the row for a few seconds
+            element.style.backgroundColor = "#f0e68c"; // Light yellow
+            setTimeout(function () {
+                element.style.backgroundColor = ""; // Reset to default background color
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    }
+
+  
+</script>
+
+</body>
 </html>
