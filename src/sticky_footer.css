@@ -1,0 +1,14 @@
+html, body {
+    height: 100%; /* This makes sure that the html and body tags take up at least the full viewport height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1; /* This allows the container to expand and fill the available space, pushing the footer down */
+}
