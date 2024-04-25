@@ -10,7 +10,7 @@
       src="https://npmcdn.com/parse/dist/parse.min.js"
     ></script>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script src="../js/committeeApp.js" defer></script>
+    <script src="../js/ta_dash_response.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -30,46 +30,20 @@
           <li><a href="ta_committee.html" class="block text-white px-4 py-2 hover:bg-gray-800">Back</a></li>
         </ul>
       </nav>
-    </aside> 
+    </aside>
+    <!-- Table -->
     <div class="container mx-auto p-8">
-        <h1 class="text-2xl font-bold text-center mb-4">Application</h1>
-        <table class="min-w-full bg-white border border-gray-300" id="appTable">
+        <h1 class="text-2xl font-bold text-center mb-4">TA Application Responses</h1>
+        <table class="min-w-full bg-white border border-gray-300" id="applicationTable">
             <thead class="bg-blue-950">
                 <tr>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Application Name</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Applied Date</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">CV</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Recommended Classes</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Requested Classes</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Past TA'd Classes</th>
-                    <th class="text-white text-left py-2 px-4 border-b border-gray-300">Accept/Deny</th>
+                    <th class="text-white text-center py-2 px-4 border-b border-gray-300">Class Name</th>
+                    <th class="text-white text-center py-2 px-4 border-b border-gray-300">Class ID</th>
+                    <th class="text-white text-center py-2 px-4 border-b border-gray-300">CRN</th>
+                    <th class="text-white text-center py-2 px-4 border-b border-gray-300">Response</th>
                 </tr>
             </thead>
             <tbody>
-                <tr hidden>
-                    <td class="py-2 px-4 border-b border-gray-300">Caleb Panoch</td>
-                    <td class="py-2 px-4 border-b border-gray-300">2022-12-01</td>
-                    <td class="py-2 px-4 border-b border-gray-300">View CV</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Intro to Computer Science</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Advanced Algorithms</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Operating Systems</td>
-                    <td class="py-2 px-4 border-b border-gray-300">
-                        <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-                        <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Deny</button>
-                    </td> 
-                </tr>
-                <tr hidden>
-                    <td class="py-2 px-4 border-b border-gray-300">Jane Smith</td>
-                    <td class="py-2 px-4 border-b border-gray-300">2023-12-05</td>
-                    <td class="py-2 px-4 border-b border-gray-300">View CV</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Web Development</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Database Management</td>
-                    <td class="py-2 px-4 border-b border-gray-300">Data Structures</td>
-                    <td class="py-2 px-4 border-b border-gray-300">
-                        <button class="acceptButton px-4 py-2 bg-green-500 text-white rounded">Accept</button>
-                        <button class="denyButton px-4 py-2 bg-red-500 text-white rounded">Deny</button>
-                    </td> 
-                </tr>
                 <!-- More table rows here -->
             </tbody>
         </table>
@@ -89,32 +63,7 @@
          }
        });
      </script>
-     <script>
-       
-       const acceptButtons = document.querySelectorAll('.acceptButton');
-       const denyButtons = document.querySelectorAll('.denyButton');
-
-       acceptButtons.forEach(acceptButton => {
-           acceptButton.addEventListener('click', function() {
-               acceptButton.textContent = "Accepted";
-               const relatedDenyButton = acceptButton.parentElement.querySelector('.denyButton');
-               if (relatedDenyButton) {
-                   relatedDenyButton.style.display = 'none';
-               }
-           });
-       });
-
-       denyButtons.forEach(denyButton => {
-           denyButton.addEventListener('click', function() {
-               denyButton.textContent = "Denied";
-               const relatedAcceptButton = denyButton.parentElement.querySelector('.acceptButton');
-               if (relatedAcceptButton) {
-                   relatedAcceptButton.style.display = 'none';
-               }
-           });
-       }); 
-
-    </script>
+     
    </body> 
 </body>
 
