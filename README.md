@@ -23,4 +23,15 @@ Start the development server:
 
 <img src="./src/gifs/taanvas_committee.gif">
 
+4. TA Applicant Portal:
+   Navigate the TA applicant portal to submit applications and view application status updates.
+
+<img src="./src/gifs/taanvas_applicant.gif">
+
+5. Instructor Portal:
+   Utilize the instructor portal to manage TA performance and view Course details.
+
+<img src="./src/gifs/taanvas_instructor.gif">
+
+
 
