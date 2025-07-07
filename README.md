@@ -1,6 +1,6 @@
 # 🎨 Taanvas
 
-Welcome to **Taanvas**, a collaborative project for the CEN5035 Software Engineering class! This project is designed to streamline the TA application process, making it easier for department staff, committees, instructors, and applicants to interact with the system. 🚀
+Welcome to **Taanvas**, a collaborative project for the CEN5035 Software Engineering class! This project is designed to streamline the TA application process, making it easier for department staff, committees, instructors, and applicants to interact with the system.
 
 ## 🚀 Quick Start
 
